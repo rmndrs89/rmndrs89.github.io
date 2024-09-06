@@ -1,18 +1,18 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
+    "name": "Robbin Romijnders",
+    "label": "Biomedical Engineer",
     "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "email": "r.j.romijnders@gmail.com",
+    "phone": "+31 (0)6 23 51 01 27",
+    "url": "https://rmndrs89.github.io/",
+    // "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      // "address": "2712 Broadway St",
+      // "postalCode": "CA 94115",
+      "city": "Kiel",
+      "countryCode": "DE"
+      // "region": "California"
     },
     "profiles": [
       {
@@ -24,13 +24,12 @@
   },
   "work": [
     {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "url": "https://example.com",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
+      "name": "University Hospital Schleswig-Holsteni",
+      "position": "Postdoctoral Researcher",
+      "startDate": "2023-07",
+      "endDate": "present",
+      "summary": "Identifying digital endpoints for the objective assessment of fatigue.",
+      "highlights": ["Digital Health", "Machine Learning", "Wearables"]
     }
   ],
   "volunteer": [
