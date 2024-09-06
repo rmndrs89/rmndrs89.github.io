@@ -24,12 +24,36 @@
   },
   "work": [
     {
-      "name": "University Hospital Schleswig-Holsteni",
+      "name": "University Hospital Schleswig-Holstein",
       "position": "Postdoctoral Researcher",
       "startDate": "2023-07",
       "endDate": "present",
       "summary": "Identifying digital endpoints for the objective assessment of fatigue.",
       "highlights": ["Digital Health", "Machine Learning", "Wearables"]
+    },
+    {
+      "name": "University Hospital Schleswig-Holstein",
+      "position": "Doctoral Researcher",
+      "startDate": "2021-03",
+      "endDate": "2023-07",
+      "summary": "Detecting gait events using wearable sensors in neurological populations.",
+      "highlights": ["Digital Health", "Deep Learning", "Wearables"]
+    },
+    {
+      "name": "Kiel University",
+      "position": "Doctoral Researcher",
+      "startDate": "2019-01",
+      "endDate": "2021-03",
+      "summary": "Detecting gait events using wearable sensors in neurological populations.",
+      "highlights": ["Digital Health", "Deep Learning", "Wearables"]
+    },
+    {
+      "name": "Code Product Solutions",
+      "position": "Simulation Engineer",
+      "startDate": "2015-09",
+      "endDate": "2018-06",
+      "summary": "Computed-aided design and engineering to support product development.",
+      "highlights": ["Computer-aided engineering (CAE)", "Finite Element Analysis (FEA)", "Python"]
     }
   ],
   "volunteer": [
