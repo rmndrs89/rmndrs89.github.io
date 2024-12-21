@@ -72,8 +72,17 @@
       "studyType": "MSc",
       "startDate": "2012-09",
       "endDate": "2015-06",
-      "score": "sehr gut (magna cum laude)",
       "courses": ["Finite Element Analysis", "Biomechanics"]
+    },
+    {
+      "institution": "Eindhoven University of Technology",
+      "location": "Eindhoven, NL",
+      "url": "https://www.tue.nl/en/our-university/departments/biomedical-engineering/",
+      "area": "Biomedical Engineering",
+      "studyType": "BSc",
+      "startDate": "2008-09",
+      "endDate": "2012-06",
+      "courses": ["Biomechanics", "Medical Imaging"]
     }
   ],
   "publications": [
