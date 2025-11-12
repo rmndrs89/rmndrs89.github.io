@@ -14,6 +14,20 @@
     "text": "Bayesian Estimation\n\n\n\n\n\nBayesian estimation supersedes the t test. \n\n\n\n\n\nRobbin Romijnders\n\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "talks/20260106_first_talk/index.html#a-note-of-history",
+    "href": "talks/20260106_first_talk/index.html#a-note-of-history",
+    "title": "Bayesian Estimation",
+    "section": "A note of history",
+    "text": "A note of history\n“Traditional” statistics (Dienes 2011)"
+  },
+  {
+    "objectID": "talks/20260106_first_talk/index.html#bayesian-statistics",
+    "href": "talks/20260106_first_talk/index.html#bayesian-statistics",
+    "title": "Bayesian Estimation",
+    "section": "Bayesian statistics",
+    "text": "Bayesian statistics\n\n\n\n\n\n\nPlausibility\n\n\nBayesian statistics starts from the premise that we can assign degrees of plausibility to theories, and what we want our data to do is to tell us how to adjust these plausibilities.\n– Dienes (2011)\n\n\n\n\\[\n\\text{Pr}(\\text{hypothesis} \\mid \\text{data})\n\\]"
+  },
+  {
     "objectID": "talks/20260106_first_talk/index.html#getting-up",
     "href": "talks/20260106_first_talk/index.html#getting-up",
     "title": "Bayesian Estimation",
@@ -32,7 +46,14 @@
     "href": "talks/20260106_first_talk/index.html#code-blocks",
     "title": "Bayesian Estimation",
     "section": "Code blocks",
-    "text": "Code blocks"
+    "text": "Code blocks\n\n\nFigure 1: Distributions of IQ for the two groups."
+  },
+  {
+    "objectID": "talks/20260106_first_talk/index.html#references",
+    "href": "talks/20260106_first_talk/index.html#references",
+    "title": "Bayesian Estimation",
+    "section": "References",
+    "text": "References\n\n\nDienes, Zoltan. 2011. “Bayesian Versus Orthodox Statistics: Which Side Are You On?” Perspectives on Psychological Science 6 (3): 274–90. https://doi.org/10.1177/1745691611406920."
   },
   {
     "objectID": "about.html",

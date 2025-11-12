@@ -19,3 +19,10 @@ affiliations:
     city: Kiel
     country: Germany
     url: https://neurogeriatrics-kiel.com/
+
+format: 
+  revealjs:
+    slide-number: true
+    smaller: true
+
+bibliography: references.bib

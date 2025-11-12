@@ -4,9 +4,27 @@ description: |
   Bayesian estimation supersedes the t test.
 format: 
   revealjs:
-    smaller: true
     footer: "Bayesian estimation supersedes the t test"
 ---
+
+## A note of history
+
+"_Traditional_" statistics [@Dienes2011]
+
+## Bayesian statistics
+
+::: {.callout-tip}
+
+## Plausibility
+
+Bayesian statistics starts from the premise that we can assign degrees of plausibility to theories, and what we want our data to do is to tell us how to adjust these plausibilities.  
+-- @Dienes2011
+
+:::
+
+$$
+\text{Pr}(\text{hypothesis} \mid \text{data})
+$$
 
 ## Getting up
 
@@ -23,15 +41,27 @@ format:
 ```{python}
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+from pathlib import Path
 
-N = 10
-x = np.linspace(0, 1, num=N)
-y = np.sin(2 * np.pi * x)
-y = y + np.random.normal(loc=0, scale=0.3, size=x.shape)
+file_path = Path("/home/robbin/Downloads/DBDA2Eprograms/TwoGroupIQ.csv")
 
-_, ax = plt.subplots(figsize=(5, 3))
-ax.plot(x, np.sin(2 * np.pi * x), lw=2, c="lightgreen", label=f"s")
-ax.plot(x, y, ls="none", marker="o", mfc="none", mec="blue", mew=2, ms=8, label="noisy")
+df = pd.read_csv(file_path, header=0, dtype={"Score": "int", "Group": "category"})
+```
+
+```{python}
+#| label: fig-score-distributions
+#| fig-cap: Distributions of IQ for the two groups.
+
+_, ax = plt.subplots()
+sns.boxplot(data=df, x="Group", y="Score", hue="Group", showfliers=False, ax=ax)
+sns.stripplot(data=df, x="Group", y="Score", c="k", alpha=0.5, ax=ax)
 plt.tight_layout()
 plt.show()
 ```
+
+## References
+
+::: {#refs}
+:::

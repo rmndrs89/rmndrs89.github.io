@@ -28,7 +28,27 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -143,6 +163,30 @@
 </div>
 
 </section>
+<section id="a-note-of-history" class="slide level2">
+<h2>A note of history</h2>
+<p>“<em>Traditional</em>” statistics <span class="citation" data-cites="Dienes2011">(<a href="#/references" role="doc-biblioref" onclick="">Dienes 2011</a>)</span></p>
+</section>
+<section id="bayesian-statistics" class="slide level2">
+<h2>Bayesian statistics</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Plausibility</strong></p>
+</div>
+<div class="callout-content">
+<p>Bayesian statistics starts from the premise that we can assign degrees of plausibility to theories, and what we want our data to do is to tell us how to adjust these plausibilities.<br>
+– <span class="citation" data-cites="Dienes2011">Dienes (<a href="#/references" role="doc-biblioref" onclick="">2011</a>)</span></p>
+</div>
+</div>
+</div>
+<p><span class="math display">\[
+\text{Pr}(\text{hypothesis} \mid \text{data})
+\]</span></p>
+</section>
 <section id="getting-up" class="slide level2">
 <h2>Getting up</h2>
 <ul>
@@ -160,9 +204,19 @@
 <section id="code-blocks" class="slide level2">
 <h2>Code blocks</h2>
 
+<img data-src="index_files/figure-revealjs/fig-score-distributions-output-1.png" class="r-stretch quarto-figure-center" id="fig-score-distributions"><p class="caption">
+Figure&nbsp;1: Distributions of IQ for the two groups.
+</p></section>
+<section id="references" class="slide level2 smaller scrollable">
+<h2>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Dienes2011" class="csl-entry" role="listitem">
+Dienes, Zoltan. 2011. <span>“Bayesian Versus Orthodox Statistics: Which Side Are You On?”</span> <em>Perspectives on Psychological Science</em> 6 (3): 274–90. <a href="https://doi.org/10.1177/1745691611406920">https://doi.org/10.1177/1745691611406920</a>.
+</div>
+</div>
 
 
-<img data-src="index_files/figure-revealjs/cell-2-output-1.png" class="r-stretch"></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -219,7 +273,7 @@
         progress: true,
 
         // Display the page number of the current slide
-        slideNumber: false,
+        slideNumber: 'c/t',
 
         // 'all', 'print', or 'speaker'
         showSlideNumber: 'all',

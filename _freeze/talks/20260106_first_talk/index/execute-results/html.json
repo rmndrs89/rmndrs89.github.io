@@ -1,8 +1,8 @@
 {
-  "hash": "46db379de1a0689b42edca0fd6d1c381",
+  "hash": "264d46425f06132adc6e90f5cfe9f062",
   "result": {
     "engine": "jupyter",
-    "markdown": "---\ntitle: \"Bayesian Estimation\"\ndescription: |\n  Bayesian estimation supersedes the t test.\nformat: \n  revealjs:\n    smaller: true\n    footer: \"Bayesian estimation supersedes the t test\"\n---\n\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Going to sleep\n\n- Get in bed\n- Count sheep\n\n## Code blocks\n\n::: {#77facb73 .cell execution_count=1}\n\n::: {.cell-output .cell-output-display}\n![](index_files/figure-revealjs/cell-2-output-1.png){}\n:::\n:::\n\n\n",
+    "markdown": "---\ntitle: \"Bayesian Estimation\"\ndescription: |\n  Bayesian estimation supersedes the t test.\nformat: \n  revealjs:\n    footer: \"Bayesian estimation supersedes the t test\"\n---\n\n\n## A note of history\n\n\"_Traditional_\" statistics [@Dienes2011]\n\n## Bayesian statistics\n\n::: {.callout-tip}\n\n## Plausibility\n\nBayesian statistics starts from the premise that we can assign degrees of plausibility to theories, and what we want our data to do is to tell us how to adjust these plausibilities.  \n-- @Dienes2011\n\n:::\n\n$$\n\\text{Pr}(\\text{hypothesis} \\mid \\text{data})\n$$\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Going to sleep\n\n- Get in bed\n- Count sheep\n\n## Code blocks\n\n\n\n::: {#cell-fig-score-distributions .cell execution_count=2}\n\n::: {.cell-output .cell-output-display}\n![Distributions of IQ for the two groups.](index_files/figure-revealjs/fig-score-distributions-output-1.png){#fig-score-distributions}\n:::\n:::\n\n\n## References\n\n::: {#refs}\n:::\n\n",
     "supporting": [
       "index_files"
     ],
