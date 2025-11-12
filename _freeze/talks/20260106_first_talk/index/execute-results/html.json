@@ -1,0 +1,12 @@
+{
+  "hash": "46db379de1a0689b42edca0fd6d1c381",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Bayesian Estimation\"\ndescription: |\n  Bayesian estimation supersedes the t test.\nformat: \n  revealjs:\n    smaller: true\n    footer: \"Bayesian estimation supersedes the t test\"\n---\n\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Going to sleep\n\n- Get in bed\n- Count sheep\n\n## Code blocks\n\n::: {#77facb73 .cell execution_count=1}\n\n::: {.cell-output .cell-output-display}\n![](index_files/figure-revealjs/cell-2-output-1.png){}\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
