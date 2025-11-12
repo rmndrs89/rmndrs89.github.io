@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Robbin Romijnders"
@@ -7,7 +8,15 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - text: "Blog"
+        href: posts.qmd
       - about.qmd
+    right: 
+      - icon: github
+        href: https://github.com/rmndrs89
+      - icon: linkedin
+        href: https://www.linkedin.com/in/robbinromijnders/
+  page-footer: "© Robbin Romijnders"
 
 format:
   html:

@@ -2,6 +2,9 @@
 title: "Robbin Romijnders"
 ---
 
-This is a Quarto website.
+## Welcome!
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+::: {.callout-tip}
+I am currently rebuilding my personal website using Quarto, so you won't see that much here yet.
+
+:::
