@@ -6,11 +6,12 @@ website:
   title: "Robbin Romijnders"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
+      - text: "About"
+        href: index.qmd
+      - text: "Talks"
+        href: talks.qmd
       - text: "Blog"
         href: posts.qmd
-      - about.qmd
     right: 
       - icon: github
         href: https://github.com/rmndrs89
