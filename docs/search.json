@@ -7,11 +7,25 @@
     "text": "Here is my first post!"
   },
   {
-    "objectID": "posts.html",
-    "href": "posts.html",
-    "title": "Blog",
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "Talks",
     "section": "",
-    "text": "My first post\n\n\n\n\n\n\nPython\n\n\nTensorFlow\n\n\n\nMy first blog post. \n\n\n\n\n\nOct 12, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Bayesian Estimation\n\n\n\n\n\nBayesian estimation supersedes the t test. \n\n\n\n\n\nRobbin Romijnders\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "talks/20260106_first_talk/index.html#getting-up",
+    "href": "talks/20260106_first_talk/index.html#getting-up",
+    "title": "Bayesian Estimation",
+    "section": "Getting up",
+    "text": "Getting up\n\nTurn off alarm\nGet out of bed"
+  },
+  {
+    "objectID": "talks/20260106_first_talk/index.html#going-to-sleep",
+    "href": "talks/20260106_first_talk/index.html#going-to-sleep",
+    "title": "Bayesian Estimation",
+    "section": "Going to sleep",
+    "text": "Going to sleep\n\nGet in bed\nCount sheep"
   },
   {
     "objectID": "about.html",
@@ -19,6 +33,13 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Blog",
+    "section": "",
+    "text": "My first post\n\n\n\n\n\n\nPython\n\n\nTensorFlow\n\n\n\nMy first blog post. \n\n\n\n\n\nOct 12, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",

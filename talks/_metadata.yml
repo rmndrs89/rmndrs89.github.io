@@ -1,0 +1,21 @@
+# freeze computational output
+# (see https://quarto.org/docs/projects/code-execution.html#freeze)
+freeze: true
+
+# Enable banner style title blocks
+title-block-banner: true
+
+# Set default metadata for talks
+author:
+  - name: Robbin Romijnders
+    url: https://rmndrs89.github.io/
+    affiliations:
+      - ref: uksh
+affiliations:
+  - id: uksh
+    name: University Hospital Schleswig-Holstein
+    department: Neurology
+    group: Neurogeriatrics
+    city: Kiel
+    country: Germany
+    url: https://neurogeriatrics-kiel.com/

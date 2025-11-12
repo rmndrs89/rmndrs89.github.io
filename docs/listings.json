@@ -1,5 +1,11 @@
 [
   {
+    "listing": "/talks.html",
+    "items": [
+      "/talks/20260106_first_talk/index.html"
+    ]
+  },
+  {
     "listing": "/posts.html",
     "items": [
       "/posts/20251112_first_post/index.html"
