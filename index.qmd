@@ -6,5 +6,10 @@ title: "Robbin Romijnders"
 
 ::: {.callout-tip}
 I am currently rebuilding my personal website using Quarto, so you won't see that much here yet.
-
 :::
+
+I am a **biomedical engineer** with expertise in **digital signal processing** and **machine learning**. 
+
+My core experience involves the analysis of complex, multimodal longitudinal datasets to understand dynamic physiological and health processes. 
+
+A crucial part of my work is communicating technical findings effectively: I am adept at translating sophisticated results for a diverse audience, ensuring clarity and relevance whether I'm speaking with a fellow engineer or a practicing clinician.

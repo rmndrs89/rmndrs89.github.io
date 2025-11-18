@@ -1,10 +1,12 @@
 ---
-title: "Bayesian Estimation"
+title: "The Curious Case of Thomas Bayes"
 description: |
-  Bayesian estimation supersedes the t test.
+  What is Bayesian analysis and why should you use it?
 format: 
   revealjs:
-    footer: "Bayesian estimation supersedes the t test"
+    footer: "The Curious Case of Thomas Bayes"
+date: 2026-01-06
+image: Thomas_Bayes.gif
 ---
 
 ## A note of history
@@ -60,6 +62,57 @@ sns.stripplot(data=df, x="Group", y="Score", c="k", alpha=0.5, ax=ax)
 plt.tight_layout()
 plt.show()
 ```
+
+## The Illusion of Objectivity
+
+::: {.incremental}
+- **Goal:** determine the effectiveness of vitamin C in treating the common cold [@Berger1988]
+- **Hypothesis:** vitamin C has _no effect_ on the common cold ("_null hypothesis_")
+- **Experiment:** 17 matched pairs
+  - _C_: subject receives vitamin C
+  - _P_: subject receives placebo
+- **Outcome:** does the subjecting receiving _C_ or the subject receiving _P_ exhibit greater relief after treatment?
+- **Results:**
+  - 13 pairs: _C_ is better
+  -  4 pairs: _P_ is better
+:::
+
+## Explore the results space
+
+```{python}
+from scipy.stats import binom
+
+theta = 0.5  # probability of success
+N = 17       # number of trials, or matched pairs
+k = np.arange(N + 1)  # number of successes in N trials
+probas = binom.pmf(k=k, n=N, p=theta)
+
+fig, ax = plt.subplots(figsize=(5, 3))
+sns.barplot(x=k, y=probas, color="lightblue", ax=ax)
+sns.barplot(x=k[probas < 0.05 / 2], y=probas[probas < 0.05 / 2], color="salmon", ax=ax)
+ax.set_xlabel("Number of pairs where $C$ is preferred")
+ax.set_ylabel("Probability")
+plt.tight_layout()
+plt.show()
+```
+
+## Discussion
+
+```{python}
+res = binom.cdf(k=4, n=N, p=theta)
+res *= 2.0
+```
+
+::: {.incremental}
+- Observing 13 preferences for _C_ is somewhat unexpected when _H_ is true
+- Proof by contradiction
+  - Assume that _H_ is true, and find a consequence _R_ that logically follows from _H_ yet is known to be false
+    - This contradiction shows that _H_ cannot be true
+  - In standard statistics:
+    - _H_ is the _null hypothesis_
+    - _R_ is the observed or more extreme values
+- $p$ = `{python} f"{res:.3f}"`
+:::
 
 ## References
 

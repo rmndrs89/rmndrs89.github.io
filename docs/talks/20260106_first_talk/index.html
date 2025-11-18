@@ -10,7 +10,8 @@
   <meta name="generator" content="quarto-1.6.39">
 
   <meta name="author" content="Robbin Romijnders">
-  <title>Robbin Romijnders – Bayesian Estimation</title>
+  <meta name="dcterms.date" content="2026-01-06">
+  <title>Robbin Romijnders – The Curious Case of Thomas Bayes</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -147,7 +148,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Bayesian Estimation</h1>
+  <h1 class="title">The Curious Case of Thomas Bayes</h1>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -162,6 +163,7 @@
     </div>
 </div>
 
+  <p class="date">2026-01-06</p>
 </section>
 <section id="a-note-of-history" class="slide level2">
 <h2>A note of history</h2>
@@ -207,9 +209,57 @@
 <img data-src="index_files/figure-revealjs/fig-score-distributions-output-1.png" class="r-stretch quarto-figure-center" id="fig-score-distributions"><p class="caption">
 Figure&nbsp;1: Distributions of IQ for the two groups.
 </p></section>
+<section id="the-illusion-of-objectivity" class="slide level2">
+<h2>The Illusion of Objectivity</h2>
+<div>
+<ul>
+<li class="fragment"><strong>Goal:</strong> determine the effectiveness of vitamin C in treating the common cold <span class="citation" data-cites="Berger1988">(<a href="#/references" role="doc-biblioref" onclick="">Berger and Berry. 1988</a>)</span></li>
+<li class="fragment"><strong>Hypothesis:</strong> vitamin C has <em>no effect</em> on the common cold (“<em>null hypothesis</em>”)</li>
+<li class="fragment"><strong>Experiment:</strong> 17 matched pairs
+<ul>
+<li class="fragment"><em>C</em>: subject receives vitamin C</li>
+<li class="fragment"><em>P</em>: subject receives placebo</li>
+</ul></li>
+<li class="fragment"><strong>Outcome:</strong> does the subjecting receiving <em>C</em> or the subject receiving <em>P</em> exhibit greater relief after treatment?</li>
+<li class="fragment"><strong>Results:</strong>
+<ul>
+<li class="fragment">13 pairs: <em>C</em> is better</li>
+<li class="fragment">4 pairs: <em>P</em> is better</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="explore-the-results-space" class="slide level2">
+<h2>Explore the results space</h2>
+
+<img data-src="index_files/figure-revealjs/cell-4-output-1.png" class="r-stretch"></section>
+<section id="discussion" class="slide level2">
+<h2>Discussion</h2>
+<div>
+<ul>
+<li class="fragment">Observing 13 preferences for <em>C</em> is somewhat unexpected when <em>H</em> is true</li>
+<li class="fragment">Proof by contradiction
+<ul>
+<li class="fragment">Assume that <em>H</em> is true, and find a consequence <em>R</em> that logically follows from <em>H</em> yet is known to be false
+<ul>
+<li class="fragment">This contradiction shows that <em>H</em> cannot be true</li>
+</ul></li>
+<li class="fragment">In standard statistics:
+<ul>
+<li class="fragment"><em>H</em> is the <em>null hypothesis</em></li>
+<li class="fragment"><em>R</em> is the observed or more extreme values</li>
+</ul></li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(p\)</span> = 0.049</li>
+</ul>
+</div>
+</section>
 <section id="references" class="slide level2 smaller scrollable">
 <h2>References</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Berger1988" class="csl-entry" role="listitem">
+Berger, James O., and Donald A. Berry. 1988. <span>“Statistical Analysis and the Illusion of Objectivity.”</span> <em>American Scientist</em> 76 (2): 159–65.
+</div>
 <div id="ref-Dienes2011" class="csl-entry" role="listitem">
 Dienes, Zoltan. 2011. <span>“Bayesian Versus Orthodox Statistics: Which Side Are You On?”</span> <em>Perspectives on Psychological Science</em> 6 (3): 274–90. <a href="https://doi.org/10.1177/1745691611406920">https://doi.org/10.1177/1745691611406920</a>.
 </div>
@@ -220,7 +270,7 @@ Dienes, Zoltan. 2011. <span>“Bayesian Versus Orthodox Statistics: Which Side A
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>Bayesian estimation supersedes the t test</p>
+<p>The Curious Case of Thomas Bayes</p>
 </div>
 </div></div>
 
