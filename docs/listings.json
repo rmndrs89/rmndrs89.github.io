@@ -1,20 +1,21 @@
 [
   {
-    "listing": "/talks.html",
-    "items": [
-      "/talks/20260106_first_talk/index.html"
-    ]
-  },
-  {
     "listing": "/posts.html",
     "items": [
       "/posts/20251112_first_post/index.html"
     ]
   },
   {
+    "listing": "/talks.html",
+    "items": [
+      "/talks/20260106_first_talk/index.html"
+    ]
+  },
+  {
     "listing": "/projects.html",
     "items": [
-      "/projects/20251117_digit_recognizer/index.html"
+      "/projects/20231016_ecological_validity/index.html",
+      "/projects/20211117_digit_recognizer/index.html"
     ]
   }
 ]
