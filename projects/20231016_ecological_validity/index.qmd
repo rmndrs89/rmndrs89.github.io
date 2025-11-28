@@ -1,0 +1,18 @@
+---
+title: "Ecological validity of a deep learning algorithm for gait events detection"
+description: |
+  Detecting gait events from inertial measurement units in the free-living environment.
+date: 2023-10-16
+image: ../assets/TCNModelArchitecture.jpg
+categories: [Python, digital signal processing, machine learning]
+code-fold: true
+code-copy: true
+code-tools: true
+code-line-numbers: true
+---
+
+::: {.callout-tip}
+## Abstract
+
+The clinical assessment of mobility, and walking specifically, is mainly based on functional tests that lack ecological validity. Thanks to inertial measurement units (IMUs), gait analysis is shifting to unsupervised monitoring in naturalistic and unconstrained settings. We have developed a deep learning (DL) algorithm for gait event detection in a heterogeneous population of different mobility-limiting diseases. The results showed a high detection performance for initial contacts (ICs) (recall: 98%, precision: 96%) and final contacts (FCs) (recall: 99%, precision: 94%) and a maximum median time error of $-$0.02 s for ICs and 0.03 s for FCs. 
+:::
