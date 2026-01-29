@@ -1,0 +1,88 @@
+---
+title: "Hidden Markov Models"
+description: |
+  Applications of Hidden Markov Models in Tracking the State of Health
+format: 
+  revealjs:
+    footer: "Hidden Markov Models"
+date: 2026-02-03
+# image: Thomas_Bayes.gif
+---
+
+
+## Introduction
+
+- Item A
+- Item B
+
+
+## States
+
+::: {#fig-states layout-ncol=3}
+
+![not_hungry](not_hungry.png)
+
+![hungry](hungry.png)
+
+![hangry](hangry.png)
+
+Three discrete states of hunger.
+:::
+
+
+## State dynamics
+
+```{python}
+#| label: fig-states-unrolled-over-time
+#| fig-cap: The states of hunger unrolled over time.
+
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+from datetime import datetime
+
+np.random.seed(datetime.now().year)
+num_timesteps = 24
+time = np.arange(num_timesteps)
+
+state_emojis = ["./img/not_hungry.png", "./img/hungry.png", "./img/hangry.png"]
+num_states = len(state_emojis)
+
+image_boxes = {
+    idx: OffsetImage(plt.imread(fname), zoom=0.4)
+    for idx, fname in enumerate(state_emojis)
+}
+
+states = []
+fig, ax = plt.subplots(figsize=(6, 2))
+# ax.plot(time, np.sin(2 * np.pi / 24 * time), lw=2, c="gray")
+for idx in range(32):
+    random_idx = np.random.randint(num_states)
+    if idx <=12:
+        ax.add_artist(
+            AnnotationBbox(image_boxes[random_idx], (2 * idx, 0.5), frameon=False)
+        )
+    states.append(random_idx)
+ax.set_xticks(np.arange(0, 24 + 2, 2))
+ax.set_xticklabels([f"{t/2:.0f}" for t in np.arange(0, 24 + 2, 2)])
+ax.set_ylim((0, 1))
+# ax.grid(which="both", axis="both")
+ax.spines[["top", "right", "left"]].set_visible(False)
+ax.set_yticks([])
+ax.set_yticklabels([])
+ax.set_xlabel("time")
+plt.tight_layout()
+plt.show()
+
+states = np.asarray(states)
+```
+
+## State transitions
+
+```{python}
+state_transition_matrix = np.zeros((num_states, num_states))
+for idx in range(len(states) - 1):
+    state_transition_matrix[states[idx], states[idx+1]] += 1
+state_transition_matrix /= np.sum(state_transition_matrix, axis=-1, keepdims=True)
+print(state_transition_matrix)
+```
