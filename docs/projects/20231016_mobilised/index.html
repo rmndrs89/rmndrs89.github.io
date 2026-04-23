@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Robbin Romijnders">
+<meta name="dcterms.date" content="2023-10-16">
+<meta name="description" content="Connecting digital mobility assessment to clinical outcomes for regulatory and clinical endorsement.">
 
-<title>Projects – Robbin Romijnders</title>
+<title>Mobilise-D – Robbin Romijnders</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +23,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-980f93a53f13aec17bb6ef669d24a48e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c64cee6cc3bf507d6e65043df1dc05d3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +103,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Robbin Romijnders</span>
     </a>
   </div>
@@ -149,15 +126,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./projects.html" aria-current="page"> 
+    <a class="nav-link" href="../../projects.html"> 
 <span class="menu-text">Projects</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./talks.html"> 
+    <a class="nav-link" href="../../talks.html"> 
 <span class="menu-text">Talks</span></a>
   </li>  
 </ul>
@@ -180,159 +157,93 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <div class="quarto-title-block"><div><h1 class="title">Mobilise-D</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+                  <div>
+        <div class="description">
+          <p>Connecting digital mobility assessment to clinical outcomes for regulatory and clinical endorsement.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Python</div>
+                <div class="quarto-category">digital signal processing</div>
+                <div class="quarto-category">machine learning</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Robbin Romijnders </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">October 16, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="SG9yaXpvbiUyMDIwMjA=">Horizon 2020 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZGlnaXRhbCUyMHNpZ25hbCUyMHByb2Nlc3Npbmc=">digital signal processing <span class="quarto-category-count">(2)</span></div><div class="category" data-category="ZmF0aWd1ZQ==">fatigue <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2FpdA==">gait <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW5lcnRpYWwlMjBtZWFzdXJlbWVudCUyMHVuaXRz">inertial measurement units <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFjaGluZSUyMGxlYXJuaW5n">machine learning <span class="quarto-category-count">(2)</span></div><div class="category" data-category="cG9zdHVyYWwlMjB0cmFuc2l0aW9u">postural transition <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background">Background</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Projects</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Novelty
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The validation of inertial measurement unit (IMU)-based gait events detection is largely based on in-laboratory evaluation against established reference methods. The limitation of these validations is that the observed walking does not reflect how people move about in their own home environment. Here, we have shown that our <strong>deep learning</strong> approach reaches excellent sensitivity and sensitivity in the *free-living environment** thereby contributing to the ecological validity of these algorithms.</p>
+</div>
+</div>
+<section id="background" class="level2">
+<h2 class="anchored" data-anchor-id="background">Background</h2>
+<p>The clinical assessment of mobility, and walking specifically, is mainly based on functional tests that lack ecological validity. Thanks to inertial measurement units (IMUs), gait analysis is shifting to unsupervised monitoring in naturalistic and unconstrained settings. We have developed a deep learning (DL) algorithm for gait event detection in a heterogeneous population of different mobility-limiting diseases. The results showed a high detection performance for initial contacts (ICs) (recall: 98%, precision: 96%) and final contacts (FCs) (recall: 99%, precision: 94%) and a maximum median time error of $-$0.02 s for ICs and 0.03 s for FCs.</p>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<p>:::</p>
+<p><img src="../assets/TCNModelArchitecture.jpg" class="img-fluid" alt="Temporal convolutional network archticture."> :::</p>
+<p>We developed deep learning algorithm based on the architecture of a temporal convolutional network (TCN). The model was first validated on an in-lab collected dataset to establish its general validity and then fine-tuned on a dataset where people were assessed for about 2.5 hours in their own home environment.</p>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="UHl0aG9uJTJDZmF0aWd1ZSUyQ3Bvc3R1cmFsJTIwdHJhbnNpdGlvbiUyQ2RpZ2l0YWwlMjBzaWduYWwlMjBwcm9jZXNzaW5nJTJDbWFjaGluZSUyMGxlYXJuaW5n" data-listing-date-sort="1767654000000" data-listing-file-modified-sort="1769685799042" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="220">
-<a href="./projects/20250106_ideafast/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./projects/assets/idea-fast.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-IDEA-FAST
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">
-Python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ZmF0aWd1ZQ=='); return false;">
-fatigue
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('cG9zdHVyYWwlMjB0cmFuc2l0aW9u'); return false;">
-postural transition
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ZGlnaXRhbCUyMHNpZ25hbCUyMHByb2Nlc3Npbmc='); return false;">
-digital signal processing
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">
-machine learning
-</div>
-</div>
-<div class="card-text listing-description">
-<p>Identifying Digital Endpoints to Assess Fatigue, Sleep and Activities of daily living in Neurodegenerative disorder and Immune-mediated inflammatory diseases.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Robbin Romijnders
-</div>
-<div class="listing-date">
-Jan 6, 2026
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="UHl0aG9uJTJDZGlnaXRhbCUyMHNpZ25hbCUyMHByb2Nlc3NpbmclMkNtYWNoaW5lJTIwbGVhcm5pbmc=" data-listing-date-sort="1697407200000" data-listing-file-modified-sort="1769685799041" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="218">
-<a href="./projects/20231016_mobilised/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./projects/assets/mobilise-d.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Mobilise-D
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">
-Python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ZGlnaXRhbCUyMHNpZ25hbCUyMHByb2Nlc3Npbmc='); return false;">
-digital signal processing
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('bWFjaGluZSUyMGxlYXJuaW5n'); return false;">
-machine learning
-</div>
-</div>
-<div class="card-text listing-description">
-<p>Connecting digital mobility assessment to clinical outcomes for regulatory and clinical endorsement.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Robbin Romijnders
-</div>
-<div class="listing-date">
-Oct 16, 2023
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="SG9yaXpvbiUyMDIwMjAlMkNnYWl0JTJDaW5lcnRpYWwlMjBtZWFzdXJlbWVudCUyMHVuaXRz" data-listing-date-sort="1612566000000" data-listing-file-modified-sort="1766058722250" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="309">
-<a href="./projects/20190101_keep_control/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./projects/assets/keep-control-logo.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Keep Control
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('SG9yaXpvbiUyMDIwMjA='); return false;">
-Horizon 2020
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Z2FpdA=='); return false;">
-gait
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('aW5lcnRpYWwlMjBtZWFzdXJlbWVudCUyMHVuaXRz'); return false;">
-inertial measurement units
-</div>
-</div>
-<div class="card-text listing-description">
-<p>Diagnosis and treatment of age-related gait and balance deficits.</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Robbin Romijnders
-</div>
-<div class="listing-date">
-Feb 6, 2021
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+
+<!-- -->
+
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -420,6 +331,57 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
     clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
@@ -754,7 +716,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "Mobilise-D"</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="an">description:</span><span class="co"> |</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">  Connecting digital mobility assessment to clinical outcomes for regulatory and clinical endorsement.</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="an">date:</span><span class="co"> 2023-10-16</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="an">image:</span><span class="co"> ../assets/mobilise-d.png</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="an">categories:</span><span class="co"> [Python, digital signal processing, machine learning]</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="an">code-fold:</span><span class="co"> true</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="an">code-copy:</span><span class="co"> true</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="an">code-tools:</span><span class="co"> true</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="an">code-line-numbers:</span><span class="co"> true</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">---</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>::: {.callout-tip}</span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="fu">## Novelty</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a>The validation of inertial measurement unit (IMU)-based gait events detection is largely based on in-laboratory evaluation against established reference methods. The limitation of these validations is that the observed walking does not reflect how people move about in their own home environment. Here, we have shown that our **deep learning** approach reaches excellent sensitivity and sensitivity in the *free-living environment** thereby contributing to the ecological validity of these algorithms.</span>
+<span id="cb1-17"><a href="#cb1-17"></a>:::</span>
+<span id="cb1-18"><a href="#cb1-18"></a></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="fu">## Background</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a>The clinical assessment of mobility, and walking specifically, is mainly based on functional tests that lack ecological validity. Thanks to inertial measurement units (IMUs), gait analysis is shifting to unsupervised monitoring in naturalistic and unconstrained settings. We have developed a deep learning (DL) algorithm for gait event detection in a heterogeneous population of different mobility-limiting diseases. The results showed a high detection performance for initial contacts (ICs) (recall: 98%, precision: 96%) and final contacts (FCs) (recall: 99%, precision: 94%) and a maximum median time error of $-$0.02 s for ICs and 0.03 s for FCs. </span>
+<span id="cb1-21"><a href="#cb1-21"></a></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="fu">## Methods</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a></span>
+<span id="cb1-24"><a href="#cb1-24"></a>:::</span>
+<span id="cb1-25"><a href="#cb1-25"></a></span>
+<span id="cb1-26"><a href="#cb1-26"></a><span class="al">![Temporal convolutional network archticture.](../assets/TCNModelArchitecture.jpg)</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>:::</span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a>We developed deep learning algorithm based on the architecture of a temporal convolutional network (TCN). The model was first validated on an in-lab collected dataset to establish its general validity and then fine-tuned on a dataset where people were assessed for about 2.5 hours in their own home environment.</span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

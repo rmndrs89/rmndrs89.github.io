@@ -2,6 +2,7 @@
   {
     "listing": "/talks.html",
     "items": [
+      "/talks/20260203_hidden_markov_models/index.html",
       "/talks/20260106_first_talk/index.html"
     ]
   },
@@ -14,8 +15,8 @@
   {
     "listing": "/projects.html",
     "items": [
-      "/projects/20231016_ecological_validity/index.html",
-      "/projects/20211117_digit_recognizer/index.html",
+      "/projects/20250106_ideafast/index.html",
+      "/projects/20231016_mobilised/index.html",
       "/projects/20190101_keep_control/index.html"
     ]
   }

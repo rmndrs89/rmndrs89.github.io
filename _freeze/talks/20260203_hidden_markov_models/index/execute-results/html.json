@@ -1,0 +1,12 @@
+{
+  "hash": "b0e4760c23c53300c1478950a2bdda1b",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Hidden Markov Models\"\ndescription: |\n  Applications of Hidden Markov Models in Tracking the State of Health\nformat: \n  revealjs:\n    footer: \"Hidden Markov Models\"\ndate: 2026-02-03\n# image: Thomas_Bayes.gif\n---\n\n\n\n## Introduction\n\n- Item A\n- Item B\n\n\n## States\n\n::: {#fig-states layout-ncol=3}\n\n![not_hungry](not_hungry.png)\n\n![hungry](hungry.png)\n\n![hangry](hangry.png)\n\nThree discrete states of hunger.\n:::\n\n\n## State dynamics\n\n::: {#cell-fig-states-unrolled-over-time .cell execution_count=1}\n\n::: {.cell-output .cell-output-display}\n![The states of hunger unrolled over time.](index_files/figure-revealjs/fig-states-unrolled-over-time-output-1.png){#fig-states-unrolled-over-time}\n:::\n:::\n\n\n## State transitions\n\n::: {#bc40cb0a .cell execution_count=2}\n\n::: {.cell-output .cell-output-stdout}\n```\n[[0.38461538 0.46153846 0.15384615]\n [0.66666667 0.16666667 0.16666667]\n [0.16666667 0.5        0.33333333]]\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
