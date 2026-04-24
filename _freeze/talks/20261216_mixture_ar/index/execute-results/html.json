@@ -1,0 +1,12 @@
+{
+  "hash": "dc35b694768bddbcd30f03f13b2878d1",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"Location and scale mixture of AR model\"\ndescription: |\n  Bayesian estimation of a mixture of AR models\nformat: \n  revealjs:\n    footer: \"The Curious Case of Thomas Bayes\"\ndate: today\n# image: Thomas_Bayes.gif\n---\n\n\n## Simulate data\n\n::: {#cell-fig-time-series .cell execution_count=1}\n\n::: {.cell-output .cell-output-display}\n![Simulated time series data from a three-component mixture of AR(2) process.](index_files/figure-revealjs/fig-time-series-output-1.png){#fig-time-series}\n:::\n:::\n\n\n## Setting the prior\n\nWe fit a location and scale mixture of AR(2) models using three components, that is, $p = 2$ and $K = 3$. We use weakly informate priors for the parameters, that is, $a_{1} = a_{2} = a_{3} = 1$, $\\mathbf{m}_{0} = \\begin{bmatrix}0 & 0\\end{bmatrix}^{\\top}$, $\\mathbf{C}_{0} = 10 \\cdot \\mathbf{I}_{2}$ and $n_{0} = d_{0} = 1$.\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

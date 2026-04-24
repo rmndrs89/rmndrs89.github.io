@@ -6,12 +6,14 @@ readme = "README.md"
 requires-python = ">=3.12,<4"
 dependencies = [
     "bambi>=0.16.0",
+    "bayeux-ml>=0.1.15",
     "dynamax>=1.0.1",
     "jax[cuda12]<0.10",
     "matplotlib>=3.10.7",
     "numpy>=2.3.4",
     "numpyro>=0.20.1",
     "pandas>=2.3.3",
+    "preliz>=0.24.0",
     "pymc>=5.26.1",
     "scikit-learn>=1.7.2",
     "scipy>=1.16.3",

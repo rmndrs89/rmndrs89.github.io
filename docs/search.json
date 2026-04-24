@@ -1,24 +1,171 @@
 [
   {
-    "objectID": "posts/20251112_first_post/index.html",
-    "href": "posts/20251112_first_post/index.html",
-    "title": "My first post",
+    "objectID": "posts/20260424_slds/index.html",
+    "href": "posts/20260424_slds/index.html",
+    "title": "Switching Linear Dynamical Systems",
     "section": "",
-    "text": "Here is my first post!"
+    "text": "Let us consider the switching VAR(\\(r\\)) process defined as: \\[\n\\mathbf{y}_{t} = \\sum_{\\ell=1}^{r} \\mathbf{A}_{\\ell}^{(z_{t})} \\mathbf{y}_{t-\\ell} + \\boldsymbol{\\epsilon}_{t} \\quad \\boldsymbol{\\epsilon}_{t} \\sim \\mathrm{N}(0, \\boldsymbol{\\Sigma}^{(z_{t})})\n\\] where \\(z_{t}\\) indexes the mode-specific VAR(\\(r\\)) process at time \\(t\\). We assume that the mode sequence \\(z_{1}, z_{2}, \\ldots, z_{T}\\) is known, and we want to compute the posterior distribution of the \\(k\\)-th mode’s VAR(\\(r\\)) parameters \\(\\mathbf{A}_{\\ell}^{(k)}\\) for \\(\\ell = 1, \\ldots, r\\) and \\(\\boldsymbol{\\Sigma}^{(k)}\\). Let \\(\\left\\{t_{1}, \\ldots, t_{N_{k}} \\right\\} = \\left\\{t : z_{t} = k \\right\\}\\). Then, we may write: \\[\n\\begin{bmatrix}\n\\mathbf{y}_{t_{1}} & \\mathbf{y}_{t_{2}} & \\ldots \\mathbf{y}_{t_{N_{k}}}\n\\end{bmatrix} = \\begin{bmatrix}\n\\mathbf{A}_{1}^{(k)} & \\mathbf{A}_{2}^{(k)} & \\ldots \\mathbf{A}_{r}^{(k)}\n\\end{bmatrix} \\begin{bmatrix}\n\\mathbf{y}_{t_{1}-1} & \\mathbf{y}_{t_{2}-1} & \\ldots & \\mathbf{y}_{t_{N_{k}}-1} \\\\\n\\mathbf{y}_{t_{1}-2} & \\mathbf{y}_{t_{2}-2} & \\ldots & \\mathbf{y}_{t_{N_{k}}-2} \\\\\n\\vdots & \\vdots & & \\vdots \\\\\n\\mathbf{y}_{t_{1}-r} & \\mathbf{y}_{t_{2}-r} & \\ldots & \\mathbf{y}_{t_{N_{k}}-r} \\\\\n\\end{bmatrix} + \\begin{bmatrix}\n\\mathbf{e}_{t_{1}} & \\mathbf{e}_{t_{2}} & \\ldots \\mathbf{e}_{t_{N_{k}}}\n\\end{bmatrix}\n\\] which we denote: \\[\n\\mathbf{Y}^{(k)} = \\mathbf{A}^{(k)} \\bar{\\mathbf{Y}}^{(k)} + \\mathbf{E}^{(k)}\n\\]\nNow, let \\(\\mathbf{D}^{(k)} = \\left\\{\\mathbf{Y}^{(k)}, \\bar{\\mathbf{Y}}^{(k)} \\right\\}\\), then we place a matrix-normal inverse-Wishart prior on the parameters \\(\\left\\{ \\mathbf{A}^{(k)}, \\boldsymbol{\\Sigma}^{(k)} \\right\\}\\): \\[\np(\\mathbf{A}^{(k)}, \\boldsymbol{\\Sigma}^{(k)} \\mid \\mathbf{D}^{(k)}) = p(\\mathbf{A}^{(k)} \\mid \\boldsymbol{\\Sigma}^{(k)}, \\mathbf{D}^{(k)}) p(\\boldsymbol{\\Sigma}^{(k)} \\mid \\mathbf{D}^{(k)})\n\\]\nThe matrix-normal inverse-Wishart prior is given by placing a matrix-normal prior \\(\\mathrm{MN}(\\mathbf{A}^{(k)} \\mid \\mathbf{M}, \\boldsymbol{\\Sigma}^{(k)}, \\mathbf{K})\\) on \\(\\mathbf{A}^{(k)}\\) given \\(\\boldsymbol{\\Sigma}^{(k)}\\): \\[\np(\\mathbf{A}^{(k)} \\mid \\boldsymbol{\\Sigma}^{(k)}) = \\frac{\\lvert \\mathbf{K} \\rvert^{d/2}}{\\lvert 2 \\pi \\boldsymbol{\\Sigma}^{(k)}\\rvert^{m/2}} \\exp\\left(-\\frac{1}{2} \\mathrm{tr}\\left((\\mathbf{A} - \\mathbf{M})^{\\top} (\\boldsymbol{\\Sigma}^{(k)})^{-1} (\\mathbf{A} - \\mathbf{M}) \\mathbf{K} \\right)\\right)\n\\]\nand an inverse-Wishart prior \\(\\mathrm{IW}(S_{0}, n)\\) on \\(\\boldsymbol{\\Sigma}^{(k)}\\): \\[\np(\\boldsymbol{\\Sigma}^{(k)}) = \\frac{\\lvert S_{0} \\rvert^{n/2} \\lvert \\boldsymbol{\\Sigma}^{(k)}\\rvert^{-(d+n+1)/2}}{2^{nd/2} \\Gamma_{d}(n/2)} \\exp \\left(-\\frac{1}{2} \\mathrm{tr}\\left( (\\boldsymbol{\\Sigma}^{(k)})^{-1} S_{0} \\right) \\right)\n\\]\nFor the posterior distribution, we see that, conditioning on the noise covariance \\(\\boldsymbol{\\Sigma}^{(k)}\\): \\[\np(\\mathbf{A}^{(k)} \\mid \\mathbf{D}^{(k)}, \\boldsymbol{\\Sigma}^{(k)}) = \\mathrm{MN}(\\mathbf{A}^{(k)} \\mid \\mathbf{S}_{y \\bar{y}}^{(k)} (\\mathbf{S}_{\\bar{y} \\bar{y}}^{(k)})^{-1}, (\\boldsymbol{\\Sigma}^{(k)})^{-1}, \\mathbf{S}_{\\bar{y} \\bar{y}}^{(k)})\n\\]\nThe posterior of the covariance is computed as: \\[\np(\\boldsymbol{\\Sigma}^{(k)} \\mid \\mathbf{D}^{(k)}) = \\mathrm{IW}(\\mathbf{S}_{y|\\bar{y}}^{(k)} + S_{0}, N_{k} + n)\n\\] with: \\[\n\\begin{align}\n\\mathbf{S}_{\\bar{y} \\bar{y}}^{(k)} &= \\bar{\\mathbf{Y}}^{(k)} (\\bar{\\mathbf{Y}}^{(k)})^{\\top} + \\mathbf{K} \\\\\n\\mathbf{S}_{y\\bar{y}}^{(k)} &= \\mathbf{Y}^{(k)} (\\bar{\\mathbf{Y}}^{(k)})^{\\top} + \\mathbf{M} \\mathbf{K} \\\\\n\\mathbf{S}_{yy}^{(k)} &= \\mathbf{Y}^{(k)} (\\mathbf{Y}^{(k)})^{\\top} + \\mathbf{M} \\mathbf{K} \\mathbf{M}^{\\top} \\\\\n\\mathbf{S}_{y|\\bar{y}}^{(k)} &= \\mathbf{S}_{yy}^{(k)} - \\mathbf{S}_{y\\bar{y}}^{(k)} (\\mathbf{S}_{\\bar{y} \\bar{y}})^{-1} (\\mathbf{S}_{y\\bar{y}}^{(k)})^{\\top}\n\\end{align}\n\\]"
   },
   {
-    "objectID": "talks.html",
-    "href": "talks.html",
-    "title": "Talks",
+    "objectID": "posts/20260424_slds/index.html#methods",
+    "href": "posts/20260424_slds/index.html#methods",
+    "title": "Switching Linear Dynamical Systems",
     "section": "",
-    "text": "Hidden Markov Models\n\n\n\n\n\nApplications of Hidden Markov Models in Tracking the State of Health \n\n\n\n\n\nFeb 3, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nThe Curious Case of Thomas Bayes\n\n\n\n\n\nWhat is Bayesian analysis and why should you use it? \n\n\n\n\n\nJan 6, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\nNo matching items"
+    "text": "Let us consider the switching VAR(\\(r\\)) process defined as: \\[\n\\mathbf{y}_{t} = \\sum_{\\ell=1}^{r} \\mathbf{A}_{\\ell}^{(z_{t})} \\mathbf{y}_{t-\\ell} + \\boldsymbol{\\epsilon}_{t} \\quad \\boldsymbol{\\epsilon}_{t} \\sim \\mathrm{N}(0, \\boldsymbol{\\Sigma}^{(z_{t})})\n\\] where \\(z_{t}\\) indexes the mode-specific VAR(\\(r\\)) process at time \\(t\\). We assume that the mode sequence \\(z_{1}, z_{2}, \\ldots, z_{T}\\) is known, and we want to compute the posterior distribution of the \\(k\\)-th mode’s VAR(\\(r\\)) parameters \\(\\mathbf{A}_{\\ell}^{(k)}\\) for \\(\\ell = 1, \\ldots, r\\) and \\(\\boldsymbol{\\Sigma}^{(k)}\\). Let \\(\\left\\{t_{1}, \\ldots, t_{N_{k}} \\right\\} = \\left\\{t : z_{t} = k \\right\\}\\). Then, we may write: \\[\n\\begin{bmatrix}\n\\mathbf{y}_{t_{1}} & \\mathbf{y}_{t_{2}} & \\ldots \\mathbf{y}_{t_{N_{k}}}\n\\end{bmatrix} = \\begin{bmatrix}\n\\mathbf{A}_{1}^{(k)} & \\mathbf{A}_{2}^{(k)} & \\ldots \\mathbf{A}_{r}^{(k)}\n\\end{bmatrix} \\begin{bmatrix}\n\\mathbf{y}_{t_{1}-1} & \\mathbf{y}_{t_{2}-1} & \\ldots & \\mathbf{y}_{t_{N_{k}}-1} \\\\\n\\mathbf{y}_{t_{1}-2} & \\mathbf{y}_{t_{2}-2} & \\ldots & \\mathbf{y}_{t_{N_{k}}-2} \\\\\n\\vdots & \\vdots & & \\vdots \\\\\n\\mathbf{y}_{t_{1}-r} & \\mathbf{y}_{t_{2}-r} & \\ldots & \\mathbf{y}_{t_{N_{k}}-r} \\\\\n\\end{bmatrix} + \\begin{bmatrix}\n\\mathbf{e}_{t_{1}} & \\mathbf{e}_{t_{2}} & \\ldots \\mathbf{e}_{t_{N_{k}}}\n\\end{bmatrix}\n\\] which we denote: \\[\n\\mathbf{Y}^{(k)} = \\mathbf{A}^{(k)} \\bar{\\mathbf{Y}}^{(k)} + \\mathbf{E}^{(k)}\n\\]\nNow, let \\(\\mathbf{D}^{(k)} = \\left\\{\\mathbf{Y}^{(k)}, \\bar{\\mathbf{Y}}^{(k)} \\right\\}\\), then we place a matrix-normal inverse-Wishart prior on the parameters \\(\\left\\{ \\mathbf{A}^{(k)}, \\boldsymbol{\\Sigma}^{(k)} \\right\\}\\): \\[\np(\\mathbf{A}^{(k)}, \\boldsymbol{\\Sigma}^{(k)} \\mid \\mathbf{D}^{(k)}) = p(\\mathbf{A}^{(k)} \\mid \\boldsymbol{\\Sigma}^{(k)}, \\mathbf{D}^{(k)}) p(\\boldsymbol{\\Sigma}^{(k)} \\mid \\mathbf{D}^{(k)})\n\\]\nThe matrix-normal inverse-Wishart prior is given by placing a matrix-normal prior \\(\\mathrm{MN}(\\mathbf{A}^{(k)} \\mid \\mathbf{M}, \\boldsymbol{\\Sigma}^{(k)}, \\mathbf{K})\\) on \\(\\mathbf{A}^{(k)}\\) given \\(\\boldsymbol{\\Sigma}^{(k)}\\): \\[\np(\\mathbf{A}^{(k)} \\mid \\boldsymbol{\\Sigma}^{(k)}) = \\frac{\\lvert \\mathbf{K} \\rvert^{d/2}}{\\lvert 2 \\pi \\boldsymbol{\\Sigma}^{(k)}\\rvert^{m/2}} \\exp\\left(-\\frac{1}{2} \\mathrm{tr}\\left((\\mathbf{A} - \\mathbf{M})^{\\top} (\\boldsymbol{\\Sigma}^{(k)})^{-1} (\\mathbf{A} - \\mathbf{M}) \\mathbf{K} \\right)\\right)\n\\]\nand an inverse-Wishart prior \\(\\mathrm{IW}(S_{0}, n)\\) on \\(\\boldsymbol{\\Sigma}^{(k)}\\): \\[\np(\\boldsymbol{\\Sigma}^{(k)}) = \\frac{\\lvert S_{0} \\rvert^{n/2} \\lvert \\boldsymbol{\\Sigma}^{(k)}\\rvert^{-(d+n+1)/2}}{2^{nd/2} \\Gamma_{d}(n/2)} \\exp \\left(-\\frac{1}{2} \\mathrm{tr}\\left( (\\boldsymbol{\\Sigma}^{(k)})^{-1} S_{0} \\right) \\right)\n\\]\nFor the posterior distribution, we see that, conditioning on the noise covariance \\(\\boldsymbol{\\Sigma}^{(k)}\\): \\[\np(\\mathbf{A}^{(k)} \\mid \\mathbf{D}^{(k)}, \\boldsymbol{\\Sigma}^{(k)}) = \\mathrm{MN}(\\mathbf{A}^{(k)} \\mid \\mathbf{S}_{y \\bar{y}}^{(k)} (\\mathbf{S}_{\\bar{y} \\bar{y}}^{(k)})^{-1}, (\\boldsymbol{\\Sigma}^{(k)})^{-1}, \\mathbf{S}_{\\bar{y} \\bar{y}}^{(k)})\n\\]\nThe posterior of the covariance is computed as: \\[\np(\\boldsymbol{\\Sigma}^{(k)} \\mid \\mathbf{D}^{(k)}) = \\mathrm{IW}(\\mathbf{S}_{y|\\bar{y}}^{(k)} + S_{0}, N_{k} + n)\n\\] with: \\[\n\\begin{align}\n\\mathbf{S}_{\\bar{y} \\bar{y}}^{(k)} &= \\bar{\\mathbf{Y}}^{(k)} (\\bar{\\mathbf{Y}}^{(k)})^{\\top} + \\mathbf{K} \\\\\n\\mathbf{S}_{y\\bar{y}}^{(k)} &= \\mathbf{Y}^{(k)} (\\bar{\\mathbf{Y}}^{(k)})^{\\top} + \\mathbf{M} \\mathbf{K} \\\\\n\\mathbf{S}_{yy}^{(k)} &= \\mathbf{Y}^{(k)} (\\mathbf{Y}^{(k)})^{\\top} + \\mathbf{M} \\mathbf{K} \\mathbf{M}^{\\top} \\\\\n\\mathbf{S}_{y|\\bar{y}}^{(k)} &= \\mathbf{S}_{yy}^{(k)} - \\mathbf{S}_{y\\bar{y}}^{(k)} (\\mathbf{S}_{\\bar{y} \\bar{y}})^{-1} (\\mathbf{S}_{y\\bar{y}}^{(k)})^{\\top}\n\\end{align}\n\\]"
   },
   {
-    "objectID": "posts.html",
-    "href": "posts.html",
-    "title": "Blog",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Robbin Romijnders",
     "section": "",
-    "text": "My first post\n\n\n\n\n\n\nPython\n\n\nTensorFlow\n\n\n\nMy first blog post. \n\n\n\n\n\nOct 12, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Tip\n\n\n\nI am currently rebuilding my personal website using Quarto, so you won’t see that much here yet.\n\n\nI am a biomedical engineer with expertise in digital signal processing and machine learning.\nMy core experience involves the analysis of complex, multimodal longitudinal datasets to understand dynamic physiological and health processes.\nA crucial part of my work is communicating technical findings effectively: I am adept at translating sophisticated results for a diverse audience, ensuring clarity and relevance whether I’m speaking with a fellow engineer or a practicing clinician."
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Robbin Romijnders",
+    "section": "",
+    "text": "Tip\n\n\n\nI am currently rebuilding my personal website using Quarto, so you won’t see that much here yet.\n\n\nI am a biomedical engineer with expertise in digital signal processing and machine learning.\nMy core experience involves the analysis of complex, multimodal longitudinal datasets to understand dynamic physiological and health processes.\nA crucial part of my work is communicating technical findings effectively: I am adept at translating sophisticated results for a diverse audience, ensuring clarity and relevance whether I’m speaking with a fellow engineer or a practicing clinician."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "IDEA-FAST\n\n\n\nPython\n\n\nfatigue\n\n\npostural transition\n\n\ndigital signal processing\n\n\nmachine learning\n\n\n\nIdentifying Digital Endpoints to Assess Fatigue, Sleep and Activities of daily living in Neurodegenerative disorder and Immune-mediated inflammatory diseases.\n\n\n\nRobbin Romijnders\n\n\nJan 6, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMobilise-D\n\n\n\nPython\n\n\ndigital signal processing\n\n\nmachine learning\n\n\n\nConnecting digital mobility assessment to clinical outcomes for regulatory and clinical endorsement.\n\n\n\nRobbin Romijnders\n\n\nOct 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKeep Control\n\n\n\nHorizon 2020\n\n\ngait\n\n\ninertial measurement units\n\n\n\nDiagnosis and treatment of age-related gait and balance deficits.\n\n\n\nRobbin Romijnders\n\n\nFeb 6, 2021\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "talks/20260519_bayesian_estimation/index.html#introduction",
+    "href": "talks/20260519_bayesian_estimation/index.html#introduction",
+    "title": "Bayesian estimation supersedes the \\(t\\) test",
+    "section": "Introduction",
+    "text": "Introduction\n\n\n\n\n\n\nBayesian inference\n\n\nBayesian inference is merely the reallocation of credibility across a space of candidate possibilities.\n\n\n\nIn Bayesian estimation, we reallocate belief toward the parameter values that are consistent with the data."
+  },
+  {
+    "objectID": "talks/20260519_bayesian_estimation/index.html#descriptive-model",
+    "href": "talks/20260519_bayesian_estimation/index.html#descriptive-model",
+    "title": "Bayesian estimation supersedes the \\(t\\) test",
+    "section": "Descriptive Model",
+    "text": "Descriptive Model\n\nSpecify a descriptive model for the data\n\n\\[\n\\begin{align}\ny_{i} \\mid k &\\sim \\mathrm{N}(\\mu_{k}, \\sigma_{k}^{2}) \\\\\ni &= 1, \\ldots, N \\\\\nk &= 1, \\ldots, K\n\\end{align}\n\\]\n\n\\(\\mu_{1} - \\mu_{2}\\): differences between central tendencies,\n\\(\\sigma_{1} - \\sigma_{2}\\): difference between variabilities"
+  },
+  {
+    "objectID": "talks/20260203_hidden_markov_models/index.html#introduction",
+    "href": "talks/20260203_hidden_markov_models/index.html#introduction",
+    "title": "Hidden Markov Models",
+    "section": "Introduction",
+    "text": "Introduction\n\nItem A\nItem B"
+  },
+  {
+    "objectID": "talks/20260203_hidden_markov_models/index.html#states",
+    "href": "talks/20260203_hidden_markov_models/index.html#states",
+    "title": "Hidden Markov Models",
+    "section": "States",
+    "text": "States\n\n\n\n\n\n\n\n\nnot_hungry\n\n\n\n\n\n\n\nhungry\n\n\n\n\n\n\n\nhangry\n\n\n\n\n\n\nFigure 1: Three discrete states of hunger."
+  },
+  {
+    "objectID": "talks/20260203_hidden_markov_models/index.html#state-dynamics",
+    "href": "talks/20260203_hidden_markov_models/index.html#state-dynamics",
+    "title": "Hidden Markov Models",
+    "section": "State dynamics",
+    "text": "State dynamics\n\n\nFigure 2: The states of hunger unrolled over time."
+  },
+  {
+    "objectID": "talks/20260203_hidden_markov_models/index.html#state-transitions",
+    "href": "talks/20260203_hidden_markov_models/index.html#state-transitions",
+    "title": "Hidden Markov Models",
+    "section": "State transitions",
+    "text": "State transitions\n\n\n[[0.38461538 0.46153846 0.15384615]\n [0.66666667 0.16666667 0.16666667]\n [0.16666667 0.5        0.33333333]]"
+  },
+  {
+    "objectID": "talks/20261216_mixture_ar/index.html#simulate-data",
+    "href": "talks/20261216_mixture_ar/index.html#simulate-data",
+    "title": "Location and scale mixture of AR model",
+    "section": "Simulate data",
+    "text": "Simulate data\n\n\nFigure 1: Simulated time series data from a three-component mixture of AR(2) process."
+  },
+  {
+    "objectID": "talks/20261216_mixture_ar/index.html#setting-the-prior",
+    "href": "talks/20261216_mixture_ar/index.html#setting-the-prior",
+    "title": "Location and scale mixture of AR model",
+    "section": "Setting the prior",
+    "text": "Setting the prior\nWe fit a location and scale mixture of AR(2) models using three components, that is, \\(p = 2\\) and \\(K = 3\\). We use weakly informate priors for the parameters, that is, \\(a_{1} = a_{2} = a_{3} = 1\\), \\(\\mathbf{m}_{0} = \\begin{bmatrix}0 & 0\\end{bmatrix}^{\\top}\\), \\(\\mathbf{C}_{0} = 10 \\cdot \\mathbf{I}_{2}\\) and \\(n_{0} = d_{0} = 1\\)."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "projects/20231016_mobilised/index.html",
+    "href": "projects/20231016_mobilised/index.html",
+    "title": "Mobilise-D",
+    "section": "",
+    "text": "Novelty\n\n\n\nThe validation of inertial measurement unit (IMU)-based gait events detection is largely based on in-laboratory evaluation against established reference methods. The limitation of these validations is that the observed walking does not reflect how people move about in their own home environment. Here, we have shown that our deep learning approach reaches excellent sensitivity and sensitivity in the *free-living environment** thereby contributing to the ecological validity of these algorithms."
+  },
+  {
+    "objectID": "projects/20231016_mobilised/index.html#background",
+    "href": "projects/20231016_mobilised/index.html#background",
+    "title": "Mobilise-D",
+    "section": "Background",
+    "text": "Background\nThe clinical assessment of mobility, and walking specifically, is mainly based on functional tests that lack ecological validity. Thanks to inertial measurement units (IMUs), gait analysis is shifting to unsupervised monitoring in naturalistic and unconstrained settings. We have developed a deep learning (DL) algorithm for gait event detection in a heterogeneous population of different mobility-limiting diseases. The results showed a high detection performance for initial contacts (ICs) (recall: 98%, precision: 96%) and final contacts (FCs) (recall: 99%, precision: 94%) and a maximum median time error of $-$0.02 s for ICs and 0.03 s for FCs."
+  },
+  {
+    "objectID": "projects/20231016_mobilised/index.html#methods",
+    "href": "projects/20231016_mobilised/index.html#methods",
+    "title": "Mobilise-D",
+    "section": "Methods",
+    "text": "Methods\n:::\n :::\nWe developed deep learning algorithm based on the architecture of a temporal convolutional network (TCN). The model was first validated on an in-lab collected dataset to establish its general validity and then fine-tuned on a dataset where people were assessed for about 2.5 hours in their own home environment."
+  },
+  {
+    "objectID": "projects/20190101_keep_control/index.html",
+    "href": "projects/20190101_keep_control/index.html",
+    "title": "Keep Control",
+    "section": "",
+    "text": "Novelty\n\n\n\nTo our best knowledge, we were the first to show that gait events could be detected from an ankle-worn inertial measurement unit in straight walking, and also slalom and curved walking, under both single- and dual-task conditions in healthy older adults, people with Parkinson’s disease and people who had suffered a stroke."
+  },
+  {
+    "objectID": "projects/20190101_keep_control/index.html#background",
+    "href": "projects/20190101_keep_control/index.html#background",
+    "title": "Keep Control",
+    "section": "Background",
+    "text": "Background\nBalance and gait deficits are ubiquitous among the older population, and lead to enormous personal, occupational and health care burden. Emerging pharmacological and non-pharmacological interventions to date have only small to moderate effects on these deficits. This is likely due to remaining fundamental questions on underlying mechanisms and treatment.\nKeep Control was an EU-funded industrial academic initial training network aiming to gain a better understanding and treatment of balance and gait deficits in older adults"
+  },
+  {
+    "objectID": "projects/20190101_keep_control/index.html#aims",
+    "href": "projects/20190101_keep_control/index.html#aims",
+    "title": "Keep Control",
+    "section": "Aims",
+    "text": "Aims\nThe focus of my part was two-fold:\n\n\n\n\n\n\nAims\n\n\n\n\nDetermine the feasibility of a patient-managed electronic health record system for use in gait-related research.\n\nDevelop algorithms to detect gait from inertial measurement unit data."
+  },
+  {
+    "objectID": "projects/20190101_keep_control/index.html#outcomes",
+    "href": "projects/20190101_keep_control/index.html#outcomes",
+    "title": "Keep Control",
+    "section": "Outcomes",
+    "text": "Outcomes\n\nPatient-managed electronic health records\n\n\n\n\n\n\nFigure 1: An elderly couple managing their electronic health records.\n\n\n\n\nWe found that the use of patient-managed electronic health records was compromised by the digital literacy of older adults. Furthermore, the integration of the tool in applied research was complicated, because the health record system does not communicate with the data collection tools that are typically used in biomechanics research.\n\n\n\nAlgorithm development\n\n\n\n\n\n\nFigure 2: Schematic illustation of the experimental setup for developing the gait detection algorithms.\n\n\n\n\nWe developed algorithms to detect gait events, i.e., initial foot contact, and final foot contact, from inertial measurement units attached to the lower back, to the ankle and to the foot. The algorithms were validated against an marker-based reference system achieving &gt;95% precision for straight and curved walking under both single- and dual-task conditions in people with Parkinson’s disease and people who had a stroke."
+  },
+  {
+    "objectID": "projects/20250106_ideafast/index.html",
+    "href": "projects/20250106_ideafast/index.html",
+    "title": "IDEA-FAST",
+    "section": "",
+    "text": "Novelty\n\n\n\nFatigue is prevalent in immune-mediated inflammatory and neurodegenerative diseases, yet its assessment relies largely on patient-reported outcomes, which capture perception but not fluctuations over time. Wearable sensors, like inertial measurement units (IMUs), offer a way to monitor daily activities and evaluate functional capacity. We have shown that kinematic features from sit-to-stand and stand-to-sit transitions are promising indicators to objectively assess fatigue in these patient populations."
+  },
+  {
+    "objectID": "projects/20250106_ideafast/index.html#background",
+    "href": "projects/20250106_ideafast/index.html#background",
+    "title": "IDEA-FAST",
+    "section": "Background",
+    "text": "Background\nFor patients with chronic diseases such as neurodegenerative disorders (NDD) and immune-mediated inflammatory diseases (IMID), any successful therapeutic intervention is its ability to improve the patients’ activities of daily living (ADL) and health-related quality of life (HRQoL). Current evaluations of ADL and HRQoL rely mainly on subjective self-reports, typically using standardized questionnaires provided by patients every few months. This approach is prone to recall bias, reliability issues and poor sensitivity to change. The use of wearable sensors provides an opportunity to objectively assess phyical (e.g., with IMUs) and physiological (e.g., heart rate monitor) state, that is likely linked to fatigue, sleepiness and ADLs."
+  },
+  {
+    "objectID": "projects/20250106_ideafast/index.html#methods",
+    "href": "projects/20250106_ideafast/index.html#methods",
+    "title": "IDEA-FAST",
+    "section": "Methods",
+    "text": "Methods\nUsing a previously validated algorithm to detect sit-to-stand and stand-to-sit movements, we determined whether specific kinematics of these movements, e.g., duration, speed, and angular range, change with increased fatigue. A linear mixed effects model was used to estimate the relation between the kinematic features and physical and mental fatigue."
   },
   {
     "objectID": "talks/20260106_first_talk/index.html#a-note-of-history",
@@ -84,129 +231,45 @@
     "text": "References\n\n\nBerger, James O., and Donald A. Berry. 1988. “Statistical Analysis and the Illusion of Objectivity.” American Scientist 76 (2): 159–65.\n\n\nDienes, Zoltan. 2011. “Bayesian Versus Orthodox Statistics: Which Side Are You On?” Perspectives on Psychological Science 6 (3): 274–90. https://doi.org/10.1177/1745691611406920."
   },
   {
-    "objectID": "projects/20250106_ideafast/index.html",
-    "href": "projects/20250106_ideafast/index.html",
-    "title": "IDEA-FAST",
+    "objectID": "talks/20261216_mixture_ar/location_and_scale_mixture.html#setting-the-priors",
+    "href": "talks/20261216_mixture_ar/location_and_scale_mixture.html#setting-the-priors",
+    "title": "Simulate data",
+    "section": "Setting the priors",
+    "text": "Setting the priors"
+  },
+  {
+    "objectID": "talks/20261216_mixture_ar/location_and_scale_mixture.html#sampling-functions",
+    "href": "talks/20261216_mixture_ar/location_and_scale_mixture.html#sampling-functions",
+    "title": "Simulate data",
+    "section": "Sampling functions",
+    "text": "Sampling functions"
+  },
+  {
+    "objectID": "talks/20261216_mixture_ar/location_and_scale_mixture.html#gibbs-sampler",
+    "href": "talks/20261216_mixture_ar/location_and_scale_mixture.html#gibbs-sampler",
+    "title": "Simulate data",
+    "section": "Gibbs sampler",
+    "text": "Gibbs sampler\n\n\n[0.35498336 0.28968468 0.35533195]"
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Blog",
     "section": "",
-    "text": "Novelty\n\n\n\nFatigue is prevalent in immune-mediated inflammatory and neurodegenerative diseases, yet its assessment relies largely on patient-reported outcomes, which capture perception but not fluctuations over time. Wearable sensors, like inertial measurement units (IMUs), offer a way to monitor daily activities and evaluate functional capacity. We have shown that kinematic features from sit-to-stand and stand-to-sit transitions are promising indicators to objectively assess fatigue in these patient populations."
+    "text": "Switching Linear Dynamical Systems\n\n\n\n\n\n\nPython\n\n\nTensorFlow\n\n\n\nSwitching Linear Dynamical Systems. \n\n\n\n\n\nApr 24, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nMy first post\n\n\n\n\n\n\nPython\n\n\nTensorFlow\n\n\n\nMy first blog post. \n\n\n\n\n\nOct 12, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "projects/20250106_ideafast/index.html#background",
-    "href": "projects/20250106_ideafast/index.html#background",
-    "title": "IDEA-FAST",
-    "section": "Background",
-    "text": "Background\nFor patients with chronic diseases such as neurodegenerative disorders (NDD) and immune-mediated inflammatory diseases (IMID), any successful therapeutic intervention is its ability to improve the patients’ activities of daily living (ADL) and health-related quality of life (HRQoL). Current evaluations of ADL and HRQoL rely mainly on subjective self-reports, typically using standardized questionnaires provided by patients every few months. This approach is prone to recall bias, reliability issues and poor sensitivity to change. The use of wearable sensors provides an opportunity to objectively assess phyical (e.g., with IMUs) and physiological (e.g., heart rate monitor) state, that is likely linked to fatigue, sleepiness and ADLs."
-  },
-  {
-    "objectID": "projects/20250106_ideafast/index.html#methods",
-    "href": "projects/20250106_ideafast/index.html#methods",
-    "title": "IDEA-FAST",
-    "section": "Methods",
-    "text": "Methods\nUsing a previously validated algorithm to detect sit-to-stand and stand-to-sit movements, we determined whether specific kinematics of these movements, e.g., duration, speed, and angular range, change with increased fatigue. A linear mixed effects model was used to estimate the relation between the kinematic features and physical and mental fatigue."
-  },
-  {
-    "objectID": "projects/20190101_keep_control/index.html",
-    "href": "projects/20190101_keep_control/index.html",
-    "title": "Keep Control",
+    "objectID": "talks.html",
+    "href": "talks.html",
+    "title": "Talks",
     "section": "",
-    "text": "Novelty\n\n\n\nTo our best knowledge, we were the first to show that gait events could be detected from an ankle-worn inertial measurement unit in straight walking, and also slalom and curved walking, under both single- and dual-task conditions in healthy older adults, people with Parkinson’s disease and people who had suffered a stroke."
+    "text": "Simulate data\n\n\n\n\n\n\n\n\n\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nLocation and scale mixture of AR model\n\n\n\n\n\nBayesian estimation of a mixture of AR models \n\n\n\n\n\nApr 24, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nBayesian estimation supersedes the \\(t\\) test\n\n\n\n\n\n\n\n\n\n\n\nApr 24, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nHidden Markov Models\n\n\n\n\n\nApplications of Hidden Markov Models in Tracking the State of Health \n\n\n\n\n\nFeb 3, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nThe Curious Case of Thomas Bayes\n\n\n\n\n\nWhat is Bayesian analysis and why should you use it? \n\n\n\n\n\nJan 6, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "projects/20190101_keep_control/index.html#background",
-    "href": "projects/20190101_keep_control/index.html#background",
-    "title": "Keep Control",
-    "section": "Background",
-    "text": "Background\nBalance and gait deficits are ubiquitous among the older population, and lead to enormous personal, occupational and health care burden. Emerging pharmacological and non-pharmacological interventions to date have only small to moderate effects on these deficits. This is likely due to remaining fundamental questions on underlying mechanisms and treatment.\nKeep Control was an EU-funded industrial academic initial training network aiming to gain a better understanding and treatment of balance and gait deficits in older adults"
-  },
-  {
-    "objectID": "projects/20190101_keep_control/index.html#aims",
-    "href": "projects/20190101_keep_control/index.html#aims",
-    "title": "Keep Control",
-    "section": "Aims",
-    "text": "Aims\nThe focus of my part was two-fold:\n\n\n\n\n\n\nAims\n\n\n\n\nDetermine the feasibility of a patient-managed electronic health record system for use in gait-related research.\n\nDevelop algorithms to detect gait from inertial measurement unit data."
-  },
-  {
-    "objectID": "projects/20190101_keep_control/index.html#outcomes",
-    "href": "projects/20190101_keep_control/index.html#outcomes",
-    "title": "Keep Control",
-    "section": "Outcomes",
-    "text": "Outcomes\n\nPatient-managed electronic health records\n\n\n\n\n\n\nFigure 1: An elderly couple managing their electronic health records.\n\n\n\n\nWe found that the use of patient-managed electronic health records was compromised by the digital literacy of older adults. Furthermore, the integration of the tool in applied research was complicated, because the health record system does not communicate with the data collection tools that are typically used in biomechanics research.\n\n\n\nAlgorithm development\n\n\n\n\n\n\nFigure 2: Schematic illustation of the experimental setup for developing the gait detection algorithms.\n\n\n\n\nWe developed algorithms to detect gait events, i.e., initial foot contact, and final foot contact, from inertial measurement units attached to the lower back, to the ankle and to the foot. The algorithms were validated against an marker-based reference system achieving &gt;95% precision for straight and curved walking under both single- and dual-task conditions in people with Parkinson’s disease and people who had a stroke."
-  },
-  {
-    "objectID": "projects/20231016_mobilised/index.html",
-    "href": "projects/20231016_mobilised/index.html",
-    "title": "Mobilise-D",
+    "objectID": "posts/20251112_first_post/index.html",
+    "href": "posts/20251112_first_post/index.html",
+    "title": "My first post",
     "section": "",
-    "text": "Novelty\n\n\n\nThe validation of inertial measurement unit (IMU)-based gait events detection is largely based on in-laboratory evaluation against established reference methods. The limitation of these validations is that the observed walking does not reflect how people move about in their own home environment. Here, we have shown that our deep learning approach reaches excellent sensitivity and sensitivity in the *free-living environment** thereby contributing to the ecological validity of these algorithms."
-  },
-  {
-    "objectID": "projects/20231016_mobilised/index.html#background",
-    "href": "projects/20231016_mobilised/index.html#background",
-    "title": "Mobilise-D",
-    "section": "Background",
-    "text": "Background\nThe clinical assessment of mobility, and walking specifically, is mainly based on functional tests that lack ecological validity. Thanks to inertial measurement units (IMUs), gait analysis is shifting to unsupervised monitoring in naturalistic and unconstrained settings. We have developed a deep learning (DL) algorithm for gait event detection in a heterogeneous population of different mobility-limiting diseases. The results showed a high detection performance for initial contacts (ICs) (recall: 98%, precision: 96%) and final contacts (FCs) (recall: 99%, precision: 94%) and a maximum median time error of $-$0.02 s for ICs and 0.03 s for FCs."
-  },
-  {
-    "objectID": "projects/20231016_mobilised/index.html#methods",
-    "href": "projects/20231016_mobilised/index.html#methods",
-    "title": "Mobilise-D",
-    "section": "Methods",
-    "text": "Methods\n:::\n :::\nWe developed deep learning algorithm based on the architecture of a temporal convolutional network (TCN). The model was first validated on an in-lab collected dataset to establish its general validity and then fine-tuned on a dataset where people were assessed for about 2.5 hours in their own home environment."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "talks/20260203_hidden_markov_models/index.html#introduction",
-    "href": "talks/20260203_hidden_markov_models/index.html#introduction",
-    "title": "Hidden Markov Models",
-    "section": "Introduction",
-    "text": "Introduction\n\nItem A\nItem B"
-  },
-  {
-    "objectID": "talks/20260203_hidden_markov_models/index.html#states",
-    "href": "talks/20260203_hidden_markov_models/index.html#states",
-    "title": "Hidden Markov Models",
-    "section": "States",
-    "text": "States\n\n\n\n\n\n\n\n\nnot_hungry\n\n\n\n\n\n\n\nhungry\n\n\n\n\n\n\n\nhangry\n\n\n\n\n\n\nFigure 1: Three discrete states of hunger."
-  },
-  {
-    "objectID": "talks/20260203_hidden_markov_models/index.html#state-dynamics",
-    "href": "talks/20260203_hidden_markov_models/index.html#state-dynamics",
-    "title": "Hidden Markov Models",
-    "section": "State dynamics",
-    "text": "State dynamics\n\n\nFigure 2: The states of hunger unrolled over time."
-  },
-  {
-    "objectID": "talks/20260203_hidden_markov_models/index.html#state-transitions",
-    "href": "talks/20260203_hidden_markov_models/index.html#state-transitions",
-    "title": "Hidden Markov Models",
-    "section": "State transitions",
-    "text": "State transitions\n\n\n[[0.38461538 0.46153846 0.15384615]\n [0.66666667 0.16666667 0.16666667]\n [0.16666667 0.5        0.33333333]]"
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "IDEA-FAST\n\n\n\nPython\n\n\nfatigue\n\n\npostural transition\n\n\ndigital signal processing\n\n\nmachine learning\n\n\n\nIdentifying Digital Endpoints to Assess Fatigue, Sleep and Activities of daily living in Neurodegenerative disorder and Immune-mediated inflammatory diseases.\n\n\n\nRobbin Romijnders\n\n\nJan 6, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMobilise-D\n\n\n\nPython\n\n\ndigital signal processing\n\n\nmachine learning\n\n\n\nConnecting digital mobility assessment to clinical outcomes for regulatory and clinical endorsement.\n\n\n\nRobbin Romijnders\n\n\nOct 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKeep Control\n\n\n\nHorizon 2020\n\n\ngait\n\n\ninertial measurement units\n\n\n\nDiagnosis and treatment of age-related gait and balance deficits.\n\n\n\nRobbin Romijnders\n\n\nFeb 6, 2021\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Robbin Romijnders",
-    "section": "",
-    "text": "Tip\n\n\n\nI am currently rebuilding my personal website using Quarto, so you won’t see that much here yet.\n\n\nI am a biomedical engineer with expertise in digital signal processing and machine learning.\nMy core experience involves the analysis of complex, multimodal longitudinal datasets to understand dynamic physiological and health processes.\nA crucial part of my work is communicating technical findings effectively: I am adept at translating sophisticated results for a diverse audience, ensuring clarity and relevance whether I’m speaking with a fellow engineer or a practicing clinician."
-  },
-  {
-    "objectID": "index.html#welcome",
-    "href": "index.html#welcome",
-    "title": "Robbin Romijnders",
-    "section": "",
-    "text": "Tip\n\n\n\nI am currently rebuilding my personal website using Quarto, so you won’t see that much here yet.\n\n\nI am a biomedical engineer with expertise in digital signal processing and machine learning.\nMy core experience involves the analysis of complex, multimodal longitudinal datasets to understand dynamic physiological and health processes.\nA crucial part of my work is communicating technical findings effectively: I am adept at translating sophisticated results for a diverse audience, ensuring clarity and relevance whether I’m speaking with a fellow engineer or a practicing clinician."
+    "text": "Here is my first post!"
   }
 ]

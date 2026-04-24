@@ -1,0 +1,29 @@
+---
+title: "Bayesian estimation supersedes the $t$ test"
+date: today
+---
+
+## Introduction
+
+::: {.callout-important}
+## Bayesian inference
+
+Bayesian inference is merely the reallocation of credibility across a space of candidate possibilities.
+:::
+
+In Bayesian estimation, we reallocate belief toward the parameter values that are consistent with the data.
+
+## Descriptive Model
+
+1. Specify a descriptive model for the data
+
+$$
+\begin{align}
+y_{i} \mid k &\sim \mathrm{N}(\mu_{k}, \sigma_{k}^{2}) \\
+i &= 1, \ldots, N \\
+k &= 1, \ldots, K
+\end{align}
+$$
+
+- $\mu_{1} - \mu_{2}$: differences between central tendencies,
+- $\sigma_{1} - \sigma_{2}$: difference between variabilities

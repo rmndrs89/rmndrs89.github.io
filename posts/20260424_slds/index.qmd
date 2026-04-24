@@ -1,0 +1,69 @@
+---
+title: "Switching Linear Dynamical Systems"
+description: |
+  Switching Linear Dynamical Systems.
+date: today
+categories: [Python, TensorFlow]
+---
+
+## Methods
+
+### Posterior distributions
+Let us consider the switching VAR($r$) process defined as:
+$$
+\mathbf{y}_{t} = \sum_{\ell=1}^{r} \mathbf{A}_{\ell}^{(z_{t})} \mathbf{y}_{t-\ell} + \boldsymbol{\epsilon}_{t} \quad \boldsymbol{\epsilon}_{t} \sim \mathrm{N}(0, \boldsymbol{\Sigma}^{(z_{t})})
+$$
+where $z_{t}$ indexes the mode-specific VAR($r$) process at time $t$. We assume that the mode sequence $z_{1}, z_{2}, \ldots, z_{T}$ is known, and we want to compute the posterior distribution of the $k$-th mode's VAR($r$) parameters $\mathbf{A}_{\ell}^{(k)}$ for $\ell = 1, \ldots, r$ and $\boldsymbol{\Sigma}^{(k)}$. Let $\left\{t_{1}, \ldots, t_{N_{k}} \right\} = \left\{t : z_{t} = k \right\}$. Then, we may write:
+$$
+\begin{bmatrix}
+\mathbf{y}_{t_{1}} & \mathbf{y}_{t_{2}} & \ldots \mathbf{y}_{t_{N_{k}}}
+\end{bmatrix} = \begin{bmatrix}
+\mathbf{A}_{1}^{(k)} & \mathbf{A}_{2}^{(k)} & \ldots \mathbf{A}_{r}^{(k)}
+\end{bmatrix} \begin{bmatrix}
+\mathbf{y}_{t_{1}-1} & \mathbf{y}_{t_{2}-1} & \ldots & \mathbf{y}_{t_{N_{k}}-1} \\
+\mathbf{y}_{t_{1}-2} & \mathbf{y}_{t_{2}-2} & \ldots & \mathbf{y}_{t_{N_{k}}-2} \\
+\vdots & \vdots & & \vdots \\
+\mathbf{y}_{t_{1}-r} & \mathbf{y}_{t_{2}-r} & \ldots & \mathbf{y}_{t_{N_{k}}-r} \\
+\end{bmatrix} + \begin{bmatrix}
+\mathbf{e}_{t_{1}} & \mathbf{e}_{t_{2}} & \ldots \mathbf{e}_{t_{N_{k}}}
+\end{bmatrix}
+$$
+which we denote:
+$$
+\mathbf{Y}^{(k)} = \mathbf{A}^{(k)} \bar{\mathbf{Y}}^{(k)} + \mathbf{E}^{(k)}
+$$
+
+Now, let $\mathbf{D}^{(k)} = \left\{\mathbf{Y}^{(k)}, \bar{\mathbf{Y}}^{(k)} \right\}$, then we place a **matrix-normal inverse-Wishart** prior on the parameters $\left\{ \mathbf{A}^{(k)}, \boldsymbol{\Sigma}^{(k)} \right\}$:
+$$
+p(\mathbf{A}^{(k)}, \boldsymbol{\Sigma}^{(k)} \mid \mathbf{D}^{(k)}) = p(\mathbf{A}^{(k)} \mid \boldsymbol{\Sigma}^{(k)}, \mathbf{D}^{(k)}) p(\boldsymbol{\Sigma}^{(k)} \mid \mathbf{D}^{(k)})
+$$
+
+
+The matrix-normal inverse-Wishart prior is given by placing a matrix-normal prior $\mathrm{MN}(\mathbf{A}^{(k)} \mid \mathbf{M}, \boldsymbol{\Sigma}^{(k)}, \mathbf{K})$ on $\mathbf{A}^{(k)}$ given $\boldsymbol{\Sigma}^{(k)}$:
+$$
+p(\mathbf{A}^{(k)} \mid \boldsymbol{\Sigma}^{(k)}) = \frac{\lvert \mathbf{K} \rvert^{d/2}}{\lvert 2 \pi \boldsymbol{\Sigma}^{(k)}\rvert^{m/2}} \exp\left(-\frac{1}{2} \mathrm{tr}\left((\mathbf{A} - \mathbf{M})^{\top} (\boldsymbol{\Sigma}^{(k)})^{-1} (\mathbf{A} - \mathbf{M}) \mathbf{K} \right)\right)
+$$
+
+and an inverse-Wishart prior $\mathrm{IW}(S_{0}, n)$ on $\boldsymbol{\Sigma}^{(k)}$:
+$$
+p(\boldsymbol{\Sigma}^{(k)}) = \frac{\lvert S_{0} \rvert^{n/2} \lvert \boldsymbol{\Sigma}^{(k)}\rvert^{-(d+n+1)/2}}{2^{nd/2} \Gamma_{d}(n/2)} \exp \left(-\frac{1}{2} \mathrm{tr}\left( (\boldsymbol{\Sigma}^{(k)})^{-1} S_{0} \right) \right)
+$$
+
+For the posterior distribution, we see that, conditioning on the noise covariance $\boldsymbol{\Sigma}^{(k)}$:
+$$
+p(\mathbf{A}^{(k)} \mid \mathbf{D}^{(k)}, \boldsymbol{\Sigma}^{(k)}) = \mathrm{MN}(\mathbf{A}^{(k)} \mid \mathbf{S}_{y \bar{y}}^{(k)} (\mathbf{S}_{\bar{y} \bar{y}}^{(k)})^{-1}, (\boldsymbol{\Sigma}^{(k)})^{-1}, \mathbf{S}_{\bar{y} \bar{y}}^{(k)})
+$$
+
+The posterior of the covariance is computed as:
+$$
+p(\boldsymbol{\Sigma}^{(k)} \mid \mathbf{D}^{(k)}) = \mathrm{IW}(\mathbf{S}_{y|\bar{y}}^{(k)} + S_{0}, N_{k} + n)
+$$
+with:
+$$
+\begin{align}
+\mathbf{S}_{\bar{y} \bar{y}}^{(k)} &= \bar{\mathbf{Y}}^{(k)} (\bar{\mathbf{Y}}^{(k)})^{\top} + \mathbf{K} \\
+\mathbf{S}_{y\bar{y}}^{(k)} &= \mathbf{Y}^{(k)} (\bar{\mathbf{Y}}^{(k)})^{\top} + \mathbf{M} \mathbf{K} \\
+\mathbf{S}_{yy}^{(k)} &= \mathbf{Y}^{(k)} (\mathbf{Y}^{(k)})^{\top} + \mathbf{M} \mathbf{K} \mathbf{M}^{\top} \\
+\mathbf{S}_{y|\bar{y}}^{(k)} &= \mathbf{S}_{yy}^{(k)} - \mathbf{S}_{y\bar{y}}^{(k)} (\mathbf{S}_{\bar{y} \bar{y}})^{-1} (\mathbf{S}_{y\bar{y}}^{(k)})^{\top}
+\end{align}
+$$

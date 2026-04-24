@@ -1,23 +1,28 @@
 [
   {
-    "listing": "/talks.html",
-    "items": [
-      "/talks/20260203_hidden_markov_models/index.html",
-      "/talks/20260106_first_talk/index.html"
-    ]
-  },
-  {
-    "listing": "/posts.html",
-    "items": [
-      "/posts/20251112_first_post/index.html"
-    ]
-  },
-  {
     "listing": "/projects.html",
     "items": [
       "/projects/20250106_ideafast/index.html",
       "/projects/20231016_mobilised/index.html",
       "/projects/20190101_keep_control/index.html"
+    ]
+  },
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/20260424_slds/index.html",
+      "/posts/20251112_first_post/index.html"
+    ]
+  },
+  {
+    "listing": "/talks.html",
+    "items": [
+      "/talks/20261216_mixture_ar/location_and_scale_mixture.html",
+      "/talks/20260519_bayesian_estimation/notebook.html",
+      "/talks/20261216_mixture_ar/index.html",
+      "/talks/20260519_bayesian_estimation/index.html",
+      "/talks/20260203_hidden_markov_models/index.html",
+      "/talks/20260106_first_talk/index.html"
     ]
   }
 ]

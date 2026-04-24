@@ -10,8 +10,8 @@ website:
         href: index.qmd
       - text: "Projects"
         href: projects.qmd
-      - text: "Talks"
-        href: talks.qmd
+      # - text: "Talks"
+      #   href: talks.qmd
       # - text: "Blog"
       #   href: posts.qmd
     right: 
