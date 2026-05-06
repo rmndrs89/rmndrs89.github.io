@@ -1,0 +1,114 @@
+---
+title: "Predicting the Eredivisie using a Bayesian Approach"
+date: 2026-05-26
+date-format: "D MMM YYYY"
+format: 
+  revealjs
+---
+
+## Introduction
+
+- Predicting match outcomes
+
+## About
+
+- Eredivisie consists of $T = 18$ teams
+  - Each team play twice against each other team
+- There are $G = 306$ games
+
+## Model
+
+- The goals scored in the $g$-th game by the home and away team are:
+$$y_{g,1}, \quad\text{and}\quad y_{g,2}$$
+
+- These are counts, and can take values $0, 1, \ldots$, typically modelled as following a Poisson distribution
+$$y_{g,j} \mid \theta_{g,j} \sim \mathrm{Poisson}(\theta_{g,j})$$ with the parameters $\theta_{g,j}$ representing the scoring intensity in the $g$-th game for the team playing at home ($j=1$) and away ($j=2$), respectively.
+
+- The parameters assume a log-linear random effect model:
+$$\begin{align}
+\log\left(\theta_{g,1}\right) &= \eta + \alpha_{h[g]} + \delta_{a[g]} \\
+\log\left(\theta_{g,2}\right) &= \alpha_{a[g]} + \delta_{h[g]} 
+\end{align}$$
+
+## Priors
+
+We assume the following priors:
+$$
+\begin{align}
+\eta &\sim \mathrm{Normal}(0, 0.0001) \\
+\alpha_{t} &\sim \mathrm{Normal}(\mu_{\alpha}, \tau_{\alpha}) \\
+\delta_{t} &\sim \mathrm{Normal}(\mu_{\delta}, \tau_{\delta})
+\end{align}
+$$
+
+We specify identifiability constrains, i.e., sum-to-zero constraint:
+$$\sum_{t=1}^{T}\alpha_{t} = 0, \quad \sum_{t=1}^{T}\delta_{t} = 0$$
+
+We define the following hyperpriors:
+$$
+\begin{align}
+\mu_{\alpha} &\sim \mathrm{Normal}(0, 0.0001), &\quad \mu_{\delta} &\sim \mathrm{Normal}(0, 0.0001) \\
+\tau_{\alpha} &\sim \mathrm{Gamma}(0.1, 0.1), &\quad \tau_{\delta} &\sim \mathrm{Gamma}(0.1, 0.1)
+\end{align}
+$$
+
+## Data
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from pathlib import Path
+import pymc as pm
+import arviz as az
+import pytensor.tensor as pt
+
+DATA_PATH = Path("/home/robbin/Datasets/football/nl")
+df = pd.read_csv(DATA_PATH / "20222023.csv", header=0)
+df.head()
+```
+
+## Code
+
+```{python}
+home_idx, teams = pd.factorize(df["HomeTeam"], sort=True)
+away_idx, _ = pd.factorize(df["AwayTeam"], sort=True)
+coords = {"team": teams}
+
+with pm.Model(coords=coords) as football_model:
+    # Mutable data
+    home_team = pm.Data("home_team", home_idx)
+    away_team = pm.Data("away_team", away_idx)
+
+    # Global model parameters
+    home = pm.Normal("home", mu=0, sigma=1)
+    sd_att = pm.HalfNormal("sd_att", sigma=2)
+    sd_def = pm.HalfNormal("sd_def", sigma=2)
+    intercept = pm.Normal("intercept", mu=0, sigma=1)
+
+    # Team-specific parameters
+    atts_star = pm.Normal("atts_star", mu=0, sigma=sd_att, dims="team")
+    defs_star = pm.Normal("defs_star", mu=0, sigma=sd_def, dims="team")
+
+    atts = pm.Deterministic("atts", atts_star - pt.mean(atts_star), dims="team")
+    defs = pm.Deterministic("defs", defs_star - pt.mean(defs_star), dims="team")
+    home_theta = pt.exp(intercept + home + atts[home_idx] + defs[away_idx])
+    away_theta = pt.exp(intercept + atts[away_idx] + defs[home_idx])
+
+    # Likelihood
+    home_points = pm.Poisson("home_points", mu=home_theta, observed=df["FTHG"].values)
+    away_points = pm.Poisson("away_points", mu=away_theta, observed=df["FTAG"].values)
+
+pm.model_to_graphviz(football_model)
+```
+
+## Sample
+
+```{python}
+with football_model:
+    football_trace = pm.sample(
+        draws=2000, tune=2000, chains=4
+    )
+
+az.plot_forest(football_trace, var_names=["atts"])
+```

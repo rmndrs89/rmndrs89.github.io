@@ -8,6 +8,7 @@ dependencies = [
     "bambi>=0.16.0",
     "bayeux-ml>=0.1.15",
     "dynamax>=1.0.1",
+    "ipywidgets>=8.1.8",
     "jax[cuda12]<0.10",
     "matplotlib>=3.10.7",
     "numpy>=2.3.4",
