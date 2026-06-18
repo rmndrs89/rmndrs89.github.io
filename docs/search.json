@@ -35,137 +35,109 @@
     "text": "IDEA-FAST\n\n\n\nPython\n\n\nfatigue\n\n\npostural transition\n\n\ndigital signal processing\n\n\nmachine learning\n\n\n\nIdentifying Digital Endpoints to Assess Fatigue, Sleep and Activities of daily living in Neurodegenerative disorder and Immune-mediated inflammatory diseases.\n\n\n\nRobbin Romijnders\n\n\nJan 6, 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMobilise-D\n\n\n\nPython\n\n\ndigital signal processing\n\n\nmachine learning\n\n\n\nConnecting digital mobility assessment to clinical outcomes for regulatory and clinical endorsement.\n\n\n\nRobbin Romijnders\n\n\nOct 16, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nKeep Control\n\n\n\nHorizon 2020\n\n\ngait\n\n\ninertial measurement units\n\n\n\nDiagnosis and treatment of age-related gait and balance deficits.\n\n\n\nRobbin Romijnders\n\n\nFeb 6, 2021\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "talks/20260519_bayesian_estimation/index.html#introduction",
-    "href": "talks/20260519_bayesian_estimation/index.html#introduction",
-    "title": "Bayesian estimation supersedes the \\(t\\) test",
+    "objectID": "talks/20260609_bayes_learning/index.html#introduction",
+    "href": "talks/20260609_bayes_learning/index.html#introduction",
+    "title": "Sequential Bayesian Learning: Linear Regression",
     "section": "Introduction",
-    "text": "Introduction\n\n\n\n\n\n\nBayesian inference\n\n\nBayesian inference is merely the reallocation of credibility across a space of candidate possibilities.\n\n\n\nIn Bayesian estimation, we reallocate belief toward the parameter values that are consistent with the data."
+    "text": "Introduction\nLinear model: \\[\ny_{i} = \\beta_{0} + \\beta_{1} x_{i} + \\epsilon_{i}, \\quad \\epsilon \\overset{\\text{iid}}{\\sim} \\mathrm{N}(0, \\sigma^{2})\n\\] for \\(i = 1, \\ldots, N\\) data points.\nSimilarly, we can write: \\[\ny_{i} \\overset{\\text{ind}}{\\sim} \\mathrm{N}(\\beta_{0} + \\beta_{1} x_{i}, \\sigma^{2})\n\\]"
   },
   {
-    "objectID": "talks/20260519_bayesian_estimation/index.html#descriptive-model",
-    "href": "talks/20260519_bayesian_estimation/index.html#descriptive-model",
-    "title": "Bayesian estimation supersedes the \\(t\\) test",
-    "section": "Descriptive Model",
-    "text": "Descriptive Model\n\nSpecify a descriptive model for the data\n\n\\[\n\\begin{align}\ny_{i} \\mid k &\\sim \\mathrm{N}(\\mu_{k}, \\sigma_{k}^{2}) \\\\\ni &= 1, \\ldots, N \\\\\nk &= 1, \\ldots, K\n\\end{align}\n\\]\n\n\\(\\mu_{1} - \\mu_{2}\\): differences between central tendencies,\n\\(\\sigma_{1} - \\sigma_{2}\\): difference between variabilities"
-  },
-  {
-    "objectID": "talks/20260203_hidden_markov_models/index.html#introduction",
-    "href": "talks/20260203_hidden_markov_models/index.html#introduction",
-    "title": "Hidden Markov Models",
-    "section": "Introduction",
-    "text": "Introduction\n\nItem A\nItem B"
-  },
-  {
-    "objectID": "talks/20260203_hidden_markov_models/index.html#states",
-    "href": "talks/20260203_hidden_markov_models/index.html#states",
-    "title": "Hidden Markov Models",
-    "section": "States",
-    "text": "States\n\n\n\n\n\n\n\n\nnot_hungry\n\n\n\n\n\n\n\nhungry\n\n\n\n\n\n\n\nhangry\n\n\n\n\n\n\nFigure 1: Three discrete states of hunger."
-  },
-  {
-    "objectID": "talks/20260203_hidden_markov_models/index.html#state-dynamics",
-    "href": "talks/20260203_hidden_markov_models/index.html#state-dynamics",
-    "title": "Hidden Markov Models",
-    "section": "State dynamics",
-    "text": "State dynamics\n\n\nFigure 2: The states of hunger unrolled over time."
-  },
-  {
-    "objectID": "talks/20260203_hidden_markov_models/index.html#state-transitions",
-    "href": "talks/20260203_hidden_markov_models/index.html#state-transitions",
-    "title": "Hidden Markov Models",
-    "section": "State transitions",
-    "text": "State transitions\n\n\n[[0.38461538 0.46153846 0.15384615]\n [0.66666667 0.16666667 0.16666667]\n [0.16666667 0.5        0.33333333]]"
-  },
-  {
-    "objectID": "talks/20261216_mixture_ar/index.html#simulate-data",
-    "href": "talks/20261216_mixture_ar/index.html#simulate-data",
-    "title": "Location and scale mixture of AR model",
+    "objectID": "talks/20260609_bayes_learning/index.html#simulate-data",
+    "href": "talks/20260609_bayes_learning/index.html#simulate-data",
+    "title": "Sequential Bayesian Learning: Linear Regression",
     "section": "Simulate data",
-    "text": "Simulate data\n\n\nFigure 1: Simulated time series data from a three-component mixture of AR(2) process."
+    "text": "Simulate data\nWe generate synthetic data (Bishop 2006) from the function:\n\\[\n\\begin{align}\ny = f(x; \\beta_{0}, \\beta_{1}) &= \\beta_{0} + \\beta_{1} x \\\\\n&= -0.3 + 0.5 x\n\\end{align}\n\\]\nFor \\(i = 1, \\ldots, N\\):\n\nChoose a value \\(x_{i} \\sim \\mathrm{U}(x \\mid -1, 1)\\)\nCompuate \\(y_{i} = f(x_{i})\\)\nAdd Gaussian noise with standard deviation \\(\\sigma = 0.2\\)"
   },
   {
-    "objectID": "talks/20261216_mixture_ar/index.html#setting-the-prior",
-    "href": "talks/20261216_mixture_ar/index.html#setting-the-prior",
-    "title": "Location and scale mixture of AR model",
-    "section": "Setting the prior",
-    "text": "Setting the prior\nWe fit a location and scale mixture of AR(2) models using three components, that is, \\(p = 2\\) and \\(K = 3\\). We use weakly informate priors for the parameters, that is, \\(a_{1} = a_{2} = a_{3} = 1\\), \\(\\mathbf{m}_{0} = \\begin{bmatrix}0 & 0\\end{bmatrix}^{\\top}\\), \\(\\mathbf{C}_{0} = 10 \\cdot \\mathbf{I}_{2}\\) and \\(n_{0} = d_{0} = 1\\)."
+    "objectID": "talks/20260609_bayes_learning/index.html#simulate-data-1",
+    "href": "talks/20260609_bayes_learning/index.html#simulate-data-1",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Simulate data",
+    "text": "Simulate data\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib.gridspec import GridSpec\nfrom scipy.stats import norm, multivariate_normal\nplt.rcParams.update({\n    \"figure.constrained_layout.use\": True,\n    \"axes.spines.top\": False,\n    \"axes.spines.right\": False\n})\nnp.random.seed(123)\n\n# Figure settings\nxlim, ylim = (-1., 1.), (-1., 1.)\nxx = np.linspace(-1, 1, 101, endpoint=True)\n\n# True parameters\nb0, b1 = -0.3, 0.5    # intercept and slope\nsigma = 0.2           # standard deviation of the noise\ntau = (1 / sigma)**2  # precision\n\n# Sample N=20 data points (but process them sequentially)\nN = 20\nxs = np.random.uniform(low=-1, high=1, size=N)\nys = b0 + b1 * xs\nys = ys + np.random.normal(loc=0, scale=sigma, size=len(xs))\n\n# Plot\n_, ax = plt.subplots(figsize=(3, 3))\nax.plot(xx, b0 + b1 * xx, c=\"lightgray\", lw=2)\nax.plot(xs, ys, \"o\", mec=\"dodgerblue\", mfc=\"none\", mew=2)\n# ax.spines[\"bottom\"].set_position(\"zero\")\nax.set(xlabel=\"x\", ylabel=\"y\", xlim=xlim, ylim=ylim)\nax.set_aspect(\"equal\")\nplt.show()"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
+    "objectID": "talks/20260609_bayes_learning/index.html#sequential-learning",
+    "href": "talks/20260609_bayes_learning/index.html#sequential-learning",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Sequential learning",
+    "text": "Sequential learning\nBefore (i.e. “prior” to) observing any data, we belief that the intercept (\\(\\beta_{0}\\)) and slope (\\(\\beta_{1}\\)) can take many values, but they are centered around 0 with some uncertainty. We model this by assuming that they are derived from a normal distribution.\n\n\nCode\n# Prior\nm = np.zeros(2)\nC = (1 / 2.0) * np.eye(2)  # precision parameter alpha = 2, Eq. (3.52), p. 153\n\nXX, YY = np.mgrid[-1:1.01:0.01, -1:1.01:0.01]\npts = np.dstack((XX, YY))\n\n_, ax = plt.subplots(figsize=(3, 3))\nax.contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))\nax.set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\nax.set_aspect(\"equal\")\nplt.show()"
   },
   {
-    "objectID": "projects/20231016_mobilised/index.html",
-    "href": "projects/20231016_mobilised/index.html",
-    "title": "Mobilise-D",
-    "section": "",
-    "text": "Novelty\n\n\n\nThe validation of inertial measurement unit (IMU)-based gait events detection is largely based on in-laboratory evaluation against established reference methods. The limitation of these validations is that the observed walking does not reflect how people move about in their own home environment. Here, we have shown that our deep learning approach reaches excellent sensitivity and sensitivity in the *free-living environment** thereby contributing to the ecological validity of these algorithms."
+    "objectID": "talks/20260609_bayes_learning/index.html#sample-parameters",
+    "href": "talks/20260609_bayes_learning/index.html#sample-parameters",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Sample parameters",
+    "text": "Sample parameters\nWe can sample some random combinations of intercept and slope (\\(\\beta_{0}\\), \\(\\beta_{1}\\)) from the joint distribution.\n\n\nCode\nbetas = multivariate_normal.rvs(mean=m, cov=C, size=10)\n\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C), alpha=0.5)\naxs[0].plot(betas[0][0], betas[0][1], \"x\", mec=\"k\")\naxs[0].set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\n\naxs[1].plot(xx, betas[0][0] + betas[0][1] * xx, c=\"r\")\naxs[1].plot(xx, b0 + b1 * xx, c=\"lightgray\")\naxs[1].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\n\nplt.show()"
   },
   {
-    "objectID": "projects/20231016_mobilised/index.html#background",
-    "href": "projects/20231016_mobilised/index.html#background",
-    "title": "Mobilise-D",
-    "section": "Background",
-    "text": "Background\nThe clinical assessment of mobility, and walking specifically, is mainly based on functional tests that lack ecological validity. Thanks to inertial measurement units (IMUs), gait analysis is shifting to unsupervised monitoring in naturalistic and unconstrained settings. We have developed a deep learning (DL) algorithm for gait event detection in a heterogeneous population of different mobility-limiting diseases. The results showed a high detection performance for initial contacts (ICs) (recall: 98%, precision: 96%) and final contacts (FCs) (recall: 99%, precision: 94%) and a maximum median time error of $-$0.02 s for ICs and 0.03 s for FCs."
+    "objectID": "talks/20260609_bayes_learning/index.html#sample-parameters-1",
+    "href": "talks/20260609_bayes_learning/index.html#sample-parameters-1",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Sample parameters",
+    "text": "Sample parameters\nWe can sample some random combinations of intercept and slope (\\(\\beta_{0}\\), \\(\\beta_{1}\\)) from the joint distribution.\n\n\nCode\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))\naxs[0].plot(betas[:, 0], betas[:, 1], \"x\", mec=\"k\")\naxs[0].set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\n\naxs[1].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\")\naxs[1].plot(xx, b0 + b1 * xx, c=\"lightgray\")\naxs[1].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\n\nplt.show()"
   },
   {
-    "objectID": "projects/20231016_mobilised/index.html#methods",
-    "href": "projects/20231016_mobilised/index.html#methods",
-    "title": "Mobilise-D",
-    "section": "Methods",
-    "text": "Methods\n:::\n :::\nWe developed deep learning algorithm based on the architecture of a temporal convolutional network (TCN). The model was first validated on an in-lab collected dataset to establish its general validity and then fine-tuned on a dataset where people were assessed for about 2.5 hours in their own home environment."
+    "objectID": "talks/20260609_bayes_learning/index.html#get-some-data",
+    "href": "talks/20260609_bayes_learning/index.html#get-some-data",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Get some data",
+    "text": "Get some data\n\nWe observe our first data point, (\\(x_{1}, y_{1}\\))\nWe compute the likelihood of that data point given (\\(\\beta_{0}, \\beta_{1}\\)): \\[\np(y_{1} \\mid \\beta_{0}, \\beta_{1}, x_{1})\n\\]\n\n\n\nCode\n# Compute the likelihood of the first data point\n# for all combinations of slope and intercept\nlikelihood = norm.pdf(ys[0], loc=XX + YY * xs[0], scale=sigma)\n\n# Plot the data point, and the likelihood\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\", alpha=0.2)\naxs[0].plot(xx, b0 + b1 * xx, c=\"gray\")\naxs[0].plot(xs[0], ys[0], \"o\", mfc=\"none\", mec=\"dodgerblue\", mew=2)\naxs[0].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\naxs[1].contourf(XX, YY, likelihood, alpha=0.7)\naxs[1].set(xlabel=\"intercept, $\\\\beta_0$\", ylabel=\"slope, $\\\\beta_1$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\nplt.show()"
   },
   {
-    "objectID": "projects/20190101_keep_control/index.html",
-    "href": "projects/20190101_keep_control/index.html",
-    "title": "Keep Control",
-    "section": "",
-    "text": "Novelty\n\n\n\nTo our best knowledge, we were the first to show that gait events could be detected from an ankle-worn inertial measurement unit in straight walking, and also slalom and curved walking, under both single- and dual-task conditions in healthy older adults, people with Parkinson’s disease and people who had suffered a stroke."
+    "objectID": "talks/20260609_bayes_learning/index.html#update-our-belief",
+    "href": "talks/20260609_bayes_learning/index.html#update-our-belief",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Update our belief",
+    "text": "Update our belief\nAfter (“posterior”) observing the data point, we can narrow down the uncertainties of the intercept and slope using Bayes’ rule: \\[\np(\\beta_{0}, \\beta_{1} \\mid y_{1}) \\propto p(y_{1} \\mid \\beta_{0}, \\beta_{1})\\ p(\\beta_{0}, \\beta_{1})\n\\]\n\n\nCode\ndef update_params(m_prior, C_prior, x_i, y_i, beta=25.0):\n    \"\"\"Update the model parameters.\n\n    Parameters\n    ----------\n    m_prior : np.ndarray\n        The prior for the mean.\n    C_prior: np.ndarray\n        The prior for the variance-covariance matrix.\n    x_i, y_i : float\n        The data point.\n    beta : float\n        The precision.\n    \n    Returns\n    -------\n    m_post : np.ndarray\n        The posterior of the mean.\n    C_post : np.ndarray\n        The posterior of the variance-covariance matrix.\n    \"\"\"\n\n    # Design vector `phi` for a linear fit: [1, x]\n    phi = np.array([1.0, x_i])\n\n    # Compute the inverse of the prior covariance\n    C_prior_inv = np.linalg.inv(C_prior)\n\n    # Update the variance-covariance matrix\n    C_post_inv = C_prior_inv + beta * np.outer(phi, phi)\n    C_post = np.linalg.inv(C_post_inv)\n\n    # Update the mean\n    m_post = C_post @ (C_prior_inv @ m_prior + beta * y_i * phi)\n    return m_post, C_post\n\nms, Cs = [], []\nfor i, (x_i, y_i) in enumerate(zip(xs, ys)):\n    if i == 0:\n        m_post, C_post = update_params(m_prior=m, C_prior=C, x_i=x_i, y_i=y_i, beta=tau)\n        ms.append(m_post)\n        Cs.append(C_post)\n    else:\n        m_post, C_post = update_params(\n            m_prior=ms[-1],\n            C_prior=Cs[-1],\n            x_i=x_i,\n            y_i=y_i,\n            beta=tau\n        )\n        ms.append(m_post)\n        Cs.append(C_post)\n\n_, axs = plt.subplots(1, 3, sharex=True, sharey=True, figsize=(9, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))\naxs[1].contourf(XX, YY, likelihood)\naxs[2].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))\nfor ax in axs:\n    ax.set(xlabel=f\"intercept, $\\\\beta_0$\", ylabel=f\"slope, $\\\\beta_1$\", xlim=xlim, ylim=ylim)\naxs[0].set_title(\"prior\")\naxs[1].set_title(\"likelihood\")\naxs[2].set_title(\"posterior\")\nplt.show()"
   },
   {
-    "objectID": "projects/20190101_keep_control/index.html#background",
-    "href": "projects/20190101_keep_control/index.html#background",
-    "title": "Keep Control",
-    "section": "Background",
-    "text": "Background\nBalance and gait deficits are ubiquitous among the older population, and lead to enormous personal, occupational and health care burden. Emerging pharmacological and non-pharmacological interventions to date have only small to moderate effects on these deficits. This is likely due to remaining fundamental questions on underlying mechanisms and treatment.\nKeep Control was an EU-funded industrial academic initial training network aiming to gain a better understanding and treatment of balance and gait deficits in older adults"
+    "objectID": "talks/20260609_bayes_learning/index.html#sample-parameters-2",
+    "href": "talks/20260609_bayes_learning/index.html#sample-parameters-2",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Sample parameters",
+    "text": "Sample parameters\n\n\nCode\nbetas = multivariate_normal.rvs(mean=ms[0], cov=Cs[0], size=10)\n\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))\naxs[0].plot(betas[:, 0], betas[:, 1], \"x\", mec=\"k\")\naxs[0].set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\n\naxs[1].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\")\naxs[1].plot(xx, b0 + b1 * xx, c=\"lightgray\")\naxs[1].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\nplt.show()"
   },
   {
-    "objectID": "projects/20190101_keep_control/index.html#aims",
-    "href": "projects/20190101_keep_control/index.html#aims",
-    "title": "Keep Control",
-    "section": "Aims",
-    "text": "Aims\nThe focus of my part was two-fold:\n\n\n\n\n\n\nAims\n\n\n\n\nDetermine the feasibility of a patient-managed electronic health record system for use in gait-related research.\n\nDevelop algorithms to detect gait from inertial measurement unit data."
+    "objectID": "talks/20260609_bayes_learning/index.html#get-some-more-data",
+    "href": "talks/20260609_bayes_learning/index.html#get-some-more-data",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Get some more data",
+    "text": "Get some more data\n\nWe observe our next data point, (\\(x_{2}, y_{2}\\))\nWe compute the likelihood of that data point given (\\(\\beta_{0}, \\beta_{1}\\)): \\[\np(y_{2} \\mid \\beta_{0}, \\beta_{1}, (x_{1}, y_{1}), x_{2})\n\\]\n\n\n\nCode\n# Compute the likelihood of the first data point\n# for all combinations of slope and intercept\nlikelihood = norm.pdf(ys[1], loc=XX + YY * xs[1], scale=sigma)\n\n# Plot the data point, and the likelihood\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\", alpha=0.2)\naxs[0].plot(xx, b0 + b1 * xx, c=\"gray\")\naxs[0].plot(xs[:2], ys[:2], \"o\", mfc=\"none\", mec=\"dodgerblue\", mew=2)\naxs[0].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\naxs[1].contourf(XX, YY, likelihood, alpha=0.7)\naxs[1].set(xlabel=\"intercept, $\\\\beta_0$\", ylabel=\"slope, $\\\\beta_1$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\nplt.show()"
   },
   {
-    "objectID": "projects/20190101_keep_control/index.html#outcomes",
-    "href": "projects/20190101_keep_control/index.html#outcomes",
-    "title": "Keep Control",
-    "section": "Outcomes",
-    "text": "Outcomes\n\nPatient-managed electronic health records\n\n\n\n\n\n\nFigure 1: An elderly couple managing their electronic health records.\n\n\n\n\nWe found that the use of patient-managed electronic health records was compromised by the digital literacy of older adults. Furthermore, the integration of the tool in applied research was complicated, because the health record system does not communicate with the data collection tools that are typically used in biomechanics research.\n\n\n\nAlgorithm development\n\n\n\n\n\n\nFigure 2: Schematic illustation of the experimental setup for developing the gait detection algorithms.\n\n\n\n\nWe developed algorithms to detect gait events, i.e., initial foot contact, and final foot contact, from inertial measurement units attached to the lower back, to the ankle and to the foot. The algorithms were validated against an marker-based reference system achieving &gt;95% precision for straight and curved walking under both single- and dual-task conditions in people with Parkinson’s disease and people who had a stroke."
+    "objectID": "talks/20260609_bayes_learning/index.html#update-our-beliefs",
+    "href": "talks/20260609_bayes_learning/index.html#update-our-beliefs",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Update our beliefs",
+    "text": "Update our beliefs\nWe update our beliefs using the prior and the likelihood\n\n\nCode\n_, axs = plt.subplots(1, 3, sharex=True, sharey=True, figsize=(9, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))\naxs[1].contourf(XX, YY, likelihood)\naxs[2].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[1], cov=Cs[1]))\nfor ax in axs:\n    ax.set(xlabel=f\"intercept, $\\\\beta_0$\", ylabel=f\"slope, $\\\\beta_1$\", xlim=xlim, ylim=ylim)\naxs[0].set_title(\"prior\")\naxs[1].set_title(\"likelihood\")\naxs[2].set_title(\"posterior\")\nplt.show()"
   },
   {
-    "objectID": "projects/20250106_ideafast/index.html",
-    "href": "projects/20250106_ideafast/index.html",
-    "title": "IDEA-FAST",
-    "section": "",
-    "text": "Novelty\n\n\n\nFatigue is prevalent in immune-mediated inflammatory and neurodegenerative diseases, yet its assessment relies largely on patient-reported outcomes, which capture perception but not fluctuations over time. Wearable sensors, like inertial measurement units (IMUs), offer a way to monitor daily activities and evaluate functional capacity. We have shown that kinematic features from sit-to-stand and stand-to-sit transitions are promising indicators to objectively assess fatigue in these patient populations."
+    "objectID": "talks/20260609_bayes_learning/index.html#get-some-more-data-1",
+    "href": "talks/20260609_bayes_learning/index.html#get-some-more-data-1",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Get some more data",
+    "text": "Get some more data\nWe continue this process iteratively\n\n\nCode\n_, axs = plt.subplots(2, 4, sharex=True, sharey=True, figsize=(12, 3))\n\nfor col_idx, n in enumerate([3, 8, 12, 19]):\n    axs[0, col_idx].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[n], cov=Cs[n]))\n\n    betas = multivariate_normal.rvs(mean=ms[n], cov=Cs[n], size=10)\n    axs[0, col_idx].plot(betas[:, 0], betas[:, 1], \"x\", mec=\"k\")\n\n    axs[1, col_idx].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\")\n    axs[1, col_idx].plot(xx, b0 + b1 * xx, c=\"k\")\n    axs[1, col_idx].plot(xs[:n], ys[:n], \"o\", mfc=\"none\", mec=\"dodgerblue\", mew=2)\n\n    axs[0, col_idx].set_xlim(xlim)\n    axs[0, col_idx].set_ylim(ylim)\n    axs[0, col_idx].set_aspect(\"equal\")\n    axs[1, col_idx].set_ylim(ylim)\n    axs[1, col_idx].set_aspect(\"equal\")\nplt.show()"
   },
   {
-    "objectID": "projects/20250106_ideafast/index.html#background",
-    "href": "projects/20250106_ideafast/index.html#background",
-    "title": "IDEA-FAST",
-    "section": "Background",
-    "text": "Background\nFor patients with chronic diseases such as neurodegenerative disorders (NDD) and immune-mediated inflammatory diseases (IMID), any successful therapeutic intervention is its ability to improve the patients’ activities of daily living (ADL) and health-related quality of life (HRQoL). Current evaluations of ADL and HRQoL rely mainly on subjective self-reports, typically using standardized questionnaires provided by patients every few months. This approach is prone to recall bias, reliability issues and poor sensitivity to change. The use of wearable sensors provides an opportunity to objectively assess phyical (e.g., with IMUs) and physiological (e.g., heart rate monitor) state, that is likely linked to fatigue, sleepiness and ADLs."
+    "objectID": "talks/20260609_bayes_learning/index.html#using-pymc",
+    "href": "talks/20260609_bayes_learning/index.html#using-pymc",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Using pymc",
+    "text": "Using pymc\n\n\nCode\nimport pymc as pm\nimport arviz as az\n\nwith pm.Model() as lin_model:\n    # Priors\n    alpha = 2.0\n    beta_0 = pm.Normal(\"beta_0\", mu=0, tau=alpha)\n    beta_1 = pm.Normal(\"beta_1\", mu=0, tau=alpha)\n\n    # Likelihood\n    mu = beta_0 + beta_1 * xs\n    y_obs = pm.Normal(\"y_obs\", mu=mu, sigma=sigma, observed=ys)\n\n    # Infernece\n    trace = pm.sample(draws=5000, tune=2000, return_inferencedata=True)\n\n_, axs = plt.subplots(2, 2)\naz.plot_trace(trace, axes=axs)\naxs[0, 0].axvline(b0, c=\"k\")\naxs[1, 0].axvline(b1, c=\"k\")\nfor ax in axs[0, :]:\n    ax.set_ylabel(f\"intercept, $\\\\beta_0$\")\nfor ax in axs[1, :]:\n    ax.set_ylabel(f\"slope, $\\\\beta_1$\")\nplt.show()"
   },
   {
-    "objectID": "projects/20250106_ideafast/index.html#methods",
-    "href": "projects/20250106_ideafast/index.html#methods",
-    "title": "IDEA-FAST",
-    "section": "Methods",
-    "text": "Methods\nUsing a previously validated algorithm to detect sit-to-stand and stand-to-sit movements, we determined whether specific kinematics of these movements, e.g., duration, speed, and angular range, change with increased fatigue. A linear mixed effects model was used to estimate the relation between the kinematic features and physical and mental fatigue."
+    "objectID": "talks/20260609_bayes_learning/index.html#discussion",
+    "href": "talks/20260609_bayes_learning/index.html#discussion",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Discussion",
+    "text": "Discussion\nFoot placement\n\nStable gait is defined as gait that does not lead to falls (Bruijn and Dieën 2018).\nFoot placement is one control mechanism of to establish stable gait (Lang et al. 2026).\nFoot placement models typically model step width (SW) and step length (SL).\n\n\\[\n\\begin{align}\n\\mathrm{SW} &= \\beta_{0} + \\beta_{\\mathrm{pos}_{\\mathrm{ml}}} \\mathrm{CoM}_{\\mathrm{pos}_{\\mathrm{ml}}} + \\beta_{\\mathrm{vel}_{\\mathrm{ml}}} \\mathrm{CoM}_{\\mathrm{vel}_{\\mathrm{ml}}} + \\epsilon_{\\mathrm{ml}} \\\\\n\\mathrm{SL} &= \\beta_{0} + \\beta_{\\mathrm{pos}_{\\mathrm{ap}}} \\mathrm{CoM}_{\\mathrm{pos}_{\\mathrm{ap}}} + \\beta_{\\mathrm{vel}_{\\mathrm{ap}}} \\mathrm{CoM}_{\\mathrm{vel}_{\\mathrm{ap}}} + \\epsilon_{\\mathrm{ap}}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#references",
+    "href": "talks/20260609_bayes_learning/index.html#references",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "References",
+    "text": "References\n\n\nBishop, Christopher M. 2006. “Chapter 3: Linear Models for Regression.” In Pattern Recognition and Machine Learning, 137–78. Springer Science+Business Media, LLC.\n\n\nBruijn, Sjoerd M., and Jaap H. van Dieën. 2018. “Control of Human Gait Stability Through Foot Placement.” Journal of The Royal Society Interface 15 (143): 20170816. https://doi.org/10.1098/rsif.2017.0816.\n\n\nLang, Charlotte, Deepak K. Ravi, Sjoerd M. Bruijn, Jeffrey M. Hausdorff, Jaap H. van Dieën, and Anina Moira van Leeuwen. 2026. “How Do We Tread? Differences in Stability-Related Foot Placement Control Between Overground and Treadmill Walking in Young Adults.” PLOS One 21 (3): e0344704. https://doi.org/10.1371/journal.pone.0344704."
   },
   {
     "objectID": "talks/20260106_first_talk/index.html#a-note-of-history",
@@ -231,39 +203,95 @@
     "text": "References\n\n\nBerger, James O., and Donald A. Berry. 1988. “Statistical Analysis and the Illusion of Objectivity.” American Scientist 76 (2): 159–65.\n\n\nDienes, Zoltan. 2011. “Bayesian Versus Orthodox Statistics: Which Side Are You On?” Perspectives on Psychological Science 6 (3): 274–90. https://doi.org/10.1177/1745691611406920."
   },
   {
-    "objectID": "talks/20261216_mixture_ar/location_and_scale_mixture.html#setting-the-priors",
-    "href": "talks/20261216_mixture_ar/location_and_scale_mixture.html#setting-the-priors",
-    "title": "Simulate data",
-    "section": "Setting the priors",
-    "text": "Setting the priors"
+    "objectID": "projects/20250106_ideafast/index.html",
+    "href": "projects/20250106_ideafast/index.html",
+    "title": "IDEA-FAST",
+    "section": "",
+    "text": "Novelty\n\n\n\nFatigue is prevalent in immune-mediated inflammatory and neurodegenerative diseases, yet its assessment relies largely on patient-reported outcomes, which capture perception but not fluctuations over time. Wearable sensors, like inertial measurement units (IMUs), offer a way to monitor daily activities and evaluate functional capacity. We have shown that kinematic features from sit-to-stand and stand-to-sit transitions are promising indicators to objectively assess fatigue in these patient populations."
   },
   {
-    "objectID": "talks/20261216_mixture_ar/location_and_scale_mixture.html#sampling-functions",
-    "href": "talks/20261216_mixture_ar/location_and_scale_mixture.html#sampling-functions",
-    "title": "Simulate data",
-    "section": "Sampling functions",
-    "text": "Sampling functions"
+    "objectID": "projects/20250106_ideafast/index.html#background",
+    "href": "projects/20250106_ideafast/index.html#background",
+    "title": "IDEA-FAST",
+    "section": "Background",
+    "text": "Background\nFor patients with chronic diseases such as neurodegenerative disorders (NDD) and immune-mediated inflammatory diseases (IMID), any successful therapeutic intervention is its ability to improve the patients’ activities of daily living (ADL) and health-related quality of life (HRQoL). Current evaluations of ADL and HRQoL rely mainly on subjective self-reports, typically using standardized questionnaires provided by patients every few months. This approach is prone to recall bias, reliability issues and poor sensitivity to change. The use of wearable sensors provides an opportunity to objectively assess phyical (e.g., with IMUs) and physiological (e.g., heart rate monitor) state, that is likely linked to fatigue, sleepiness and ADLs."
   },
   {
-    "objectID": "talks/20261216_mixture_ar/location_and_scale_mixture.html#gibbs-sampler",
-    "href": "talks/20261216_mixture_ar/location_and_scale_mixture.html#gibbs-sampler",
-    "title": "Simulate data",
-    "section": "Gibbs sampler",
-    "text": "Gibbs sampler\n\n\n[0.35498336 0.28968468 0.35533195]"
+    "objectID": "projects/20250106_ideafast/index.html#methods",
+    "href": "projects/20250106_ideafast/index.html#methods",
+    "title": "IDEA-FAST",
+    "section": "Methods",
+    "text": "Methods\nUsing a previously validated algorithm to detect sit-to-stand and stand-to-sit movements, we determined whether specific kinematics of these movements, e.g., duration, speed, and angular range, change with increased fatigue. A linear mixed effects model was used to estimate the relation between the kinematic features and physical and mental fatigue."
+  },
+  {
+    "objectID": "projects/20190101_keep_control/index.html",
+    "href": "projects/20190101_keep_control/index.html",
+    "title": "Keep Control",
+    "section": "",
+    "text": "Novelty\n\n\n\nTo our best knowledge, we were the first to show that gait events could be detected from an ankle-worn inertial measurement unit in straight walking, and also slalom and curved walking, under both single- and dual-task conditions in healthy older adults, people with Parkinson’s disease and people who had suffered a stroke."
+  },
+  {
+    "objectID": "projects/20190101_keep_control/index.html#background",
+    "href": "projects/20190101_keep_control/index.html#background",
+    "title": "Keep Control",
+    "section": "Background",
+    "text": "Background\nBalance and gait deficits are ubiquitous among the older population, and lead to enormous personal, occupational and health care burden. Emerging pharmacological and non-pharmacological interventions to date have only small to moderate effects on these deficits. This is likely due to remaining fundamental questions on underlying mechanisms and treatment.\nKeep Control was an EU-funded industrial academic initial training network aiming to gain a better understanding and treatment of balance and gait deficits in older adults"
+  },
+  {
+    "objectID": "projects/20190101_keep_control/index.html#aims",
+    "href": "projects/20190101_keep_control/index.html#aims",
+    "title": "Keep Control",
+    "section": "Aims",
+    "text": "Aims\nThe focus of my part was two-fold:\n\n\n\n\n\n\nAims\n\n\n\n\nDetermine the feasibility of a patient-managed electronic health record system for use in gait-related research.\n\nDevelop algorithms to detect gait from inertial measurement unit data."
+  },
+  {
+    "objectID": "projects/20190101_keep_control/index.html#outcomes",
+    "href": "projects/20190101_keep_control/index.html#outcomes",
+    "title": "Keep Control",
+    "section": "Outcomes",
+    "text": "Outcomes\n\nPatient-managed electronic health records\n\n\n\n\n\n\nFigure 1: An elderly couple managing their electronic health records.\n\n\n\n\nWe found that the use of patient-managed electronic health records was compromised by the digital literacy of older adults. Furthermore, the integration of the tool in applied research was complicated, because the health record system does not communicate with the data collection tools that are typically used in biomechanics research.\n\n\n\nAlgorithm development\n\n\n\n\n\n\nFigure 2: Schematic illustation of the experimental setup for developing the gait detection algorithms.\n\n\n\n\nWe developed algorithms to detect gait events, i.e., initial foot contact, and final foot contact, from inertial measurement units attached to the lower back, to the ankle and to the foot. The algorithms were validated against an marker-based reference system achieving &gt;95% precision for straight and curved walking under both single- and dual-task conditions in people with Parkinson’s disease and people who had a stroke."
+  },
+  {
+    "objectID": "projects/20231016_mobilised/index.html",
+    "href": "projects/20231016_mobilised/index.html",
+    "title": "Mobilise-D",
+    "section": "",
+    "text": "Novelty\n\n\n\nThe validation of inertial measurement unit (IMU)-based gait events detection is largely based on in-laboratory evaluation against established reference methods. The limitation of these validations is that the observed walking does not reflect how people move about in their own home environment. Here, we have shown that our deep learning approach reaches excellent sensitivity and sensitivity in the *free-living environment** thereby contributing to the ecological validity of these algorithms."
+  },
+  {
+    "objectID": "projects/20231016_mobilised/index.html#background",
+    "href": "projects/20231016_mobilised/index.html#background",
+    "title": "Mobilise-D",
+    "section": "Background",
+    "text": "Background\nThe clinical assessment of mobility, and walking specifically, is mainly based on functional tests that lack ecological validity. Thanks to inertial measurement units (IMUs), gait analysis is shifting to unsupervised monitoring in naturalistic and unconstrained settings. We have developed a deep learning (DL) algorithm for gait event detection in a heterogeneous population of different mobility-limiting diseases. The results showed a high detection performance for initial contacts (ICs) (recall: 98%, precision: 96%) and final contacts (FCs) (recall: 99%, precision: 94%) and a maximum median time error of $-$0.02 s for ICs and 0.03 s for FCs."
+  },
+  {
+    "objectID": "projects/20231016_mobilised/index.html#methods",
+    "href": "projects/20231016_mobilised/index.html#methods",
+    "title": "Mobilise-D",
+    "section": "Methods",
+    "text": "Methods\n:::\n :::\nWe developed deep learning algorithm based on the architecture of a temporal convolutional network (TCN). The model was first validated on an in-lab collected dataset to establish its general validity and then fine-tuned on a dataset where people were assessed for about 2.5 hours in their own home environment."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   },
   {
     "objectID": "posts.html",
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "Switching Linear Dynamical Systems\n\n\n\n\n\n\nPython\n\n\nTensorFlow\n\n\n\nSwitching Linear Dynamical Systems. \n\n\n\n\n\nApr 24, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nMy first post\n\n\n\n\n\n\nPython\n\n\nTensorFlow\n\n\n\nMy first blog post. \n\n\n\n\n\nOct 12, 2025\n\n\n\n\n\n\nNo matching items"
+    "text": "Switching Linear Dynamical Systems\n\n\n\n\n\n\nPython\n\n\nTensorFlow\n\n\n\nSwitching Linear Dynamical Systems. \n\n\n\n\n\nJun 18, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nMy first post\n\n\n\n\n\n\nPython\n\n\nTensorFlow\n\n\n\nMy first blog post. \n\n\n\n\n\nOct 12, 2025\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "talks.html",
     "href": "talks.html",
     "title": "Talks",
     "section": "",
-    "text": "Sequential Bayesian Learning: Linear Regression\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nThe Curious Case of Thomas Bayes\n\n\n\n\n\nWhat is Bayesian analysis and why should you use it? \n\n\n\n\n\nJan 6, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\nNo matching items"
+    "text": "Foot placement estimation\n\n\n\n\n\n\n\n\n\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nSequential Bayesian Learning: Linear Regression for Foot Placement Prediction\n\n\n\n\n\n\n\n\n\n\n\nJun 30, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nThe Curious Case of Thomas Bayes\n\n\n\n\n\nWhat is Bayesian analysis and why should you use it? \n\n\n\n\n\nJan 6, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/20251112_first_post/index.html",
@@ -271,208 +299,5 @@
     "title": "My first post",
     "section": "",
     "text": "Here is my first post!"
-  },
-  {
-    "objectID": "talks/20260526_eredivisie/index.html#introduction",
-    "href": "talks/20260526_eredivisie/index.html#introduction",
-    "title": "Predicting the Eredivisie using a Bayesian Approach",
-    "section": "Introduction",
-    "text": "Introduction\n\nPredicting match outcomes"
-  },
-  {
-    "objectID": "talks/20260526_eredivisie/index.html#about",
-    "href": "talks/20260526_eredivisie/index.html#about",
-    "title": "Predicting the Eredivisie using a Bayesian Approach",
-    "section": "About",
-    "text": "About\n\nEredivisie consists of \\(T = 18\\) teams\n\nEach team play twice against each other team\n\nThere are \\(G = 306\\) games"
-  },
-  {
-    "objectID": "talks/20260526_eredivisie/index.html#model",
-    "href": "talks/20260526_eredivisie/index.html#model",
-    "title": "Predicting the Eredivisie using a Bayesian Approach",
-    "section": "Model",
-    "text": "Model\n\nThe goals scored in the \\(g\\)-th game by the home and away team are: \\[y_{g,1}, \\quad\\text{and}\\quad y_{g,2}\\]\nThese are counts, and can take values \\(0, 1, \\ldots\\), typically modelled as following a Poisson distribution \\[y_{g,j} \\mid \\theta_{g,j} \\sim \\mathrm{Poisson}(\\theta_{g,j})\\] with the parameters \\(\\theta_{g,j}\\) representing the scoring intensity in the \\(g\\)-th game for the team playing at home (\\(j=1\\)) and away (\\(j=2\\)), respectively.\nThe parameters assume a log-linear random effect model: \\[\\begin{align}\n\\log\\left(\\theta_{g,1}\\right) &= \\eta + \\alpha_{h[g]} + \\delta_{a[g]} \\\\\n\\log\\left(\\theta_{g,2}\\right) &= \\alpha_{a[g]} + \\delta_{h[g]}\n\\end{align}\\]"
-  },
-  {
-    "objectID": "talks/20260526_eredivisie/index.html#priors",
-    "href": "talks/20260526_eredivisie/index.html#priors",
-    "title": "Predicting the Eredivisie using a Bayesian Approach",
-    "section": "Priors",
-    "text": "Priors\nWe assume the following priors: \\[\n\\begin{align}\n\\eta &\\sim \\mathrm{Normal}(0, 0.0001) \\\\\n\\alpha_{t} &\\sim \\mathrm{Normal}(\\mu_{\\alpha}, \\tau_{\\alpha}) \\\\\n\\delta_{t} &\\sim \\mathrm{Normal}(\\mu_{\\delta}, \\tau_{\\delta})\n\\end{align}\n\\]\nWe specify identifiability constrains, i.e., sum-to-zero constraint: \\[\\sum_{t=1}^{T}\\alpha_{t} = 0, \\quad \\sum_{t=1}^{T}\\delta_{t} = 0\\]\nWe define the following hyperpriors: \\[\n\\begin{align}\n\\mu_{\\alpha} &\\sim \\mathrm{Normal}(0, 0.0001), &\\quad \\mu_{\\delta} &\\sim \\mathrm{Normal}(0, 0.0001) \\\\\n\\tau_{\\alpha} &\\sim \\mathrm{Gamma}(0.1, 0.1), &\\quad \\tau_{\\delta} &\\sim \\mathrm{Gamma}(0.1, 0.1)\n\\end{align}\n\\]"
-  },
-  {
-    "objectID": "talks/20260526_eredivisie/index.html#data",
-    "href": "talks/20260526_eredivisie/index.html#data",
-    "title": "Predicting the Eredivisie using a Bayesian Approach",
-    "section": "Data",
-    "text": "Data\n\n\n\n\n\n\n\n\n\nDiv\nDate\nTime\nHomeTeam\nAwayTeam\nFTHG\nFTAG\nFTR\nHTHG\nHTAG\n...\nAvgC&lt;2.5\nAHCh\nB365CAHH\nB365CAHA\nPCAHH\nPCAHA\nMaxCAHH\nMaxCAHA\nAvgCAHH\nAvgCAHA\n\n\n\n\n0\nN1\n05/08/2022\n19:00\nHeerenveen\nSparta Rotterdam\n0\n0\nD\n0\n0\n...\n1.83\n-0.50\n1.86\n2.04\n1.86\n2.05\n1.91\n2.05\n1.87\n1.96\n\n\n1\nN1\n06/08/2022\n15:30\nFor Sittard\nAjax\n2\n3\nA\n1\n0\n...\n3.23\n1.75\n2.04\n1.86\n2.01\n1.88\n2.08\n1.89\n2.01\n1.84\n\n\n2\nN1\n06/08/2022\n17:45\nCambuur\nExcelsior\n0\n2\nA\n0\n2\n...\n2.64\n-0.50\n1.94\n1.96\n1.93\n1.98\n1.96\n2.03\n1.87\n1.96\n\n\n3\nN1\n06/08/2022\n19:00\nPSV Eindhoven\nFC Emmen\n4\n1\nH\n3\n0\n...\n2.62\n-2.00\n2.00\n1.90\n1.97\n1.92\n2.01\n2.01\n1.90\n1.94\n\n\n4\nN1\n06/08/2022\n20:00\nWaalwijk\nUtrecht\n2\n2\nD\n2\n0\n...\n2.03\n0.50\n1.98\n1.92\n2.02\n1.89\n2.02\n1.95\n1.93\n1.90\n\n\n\n\n5 rows × 105 columns"
-  },
-  {
-    "objectID": "talks/20260526_eredivisie/index.html#code",
-    "href": "talks/20260526_eredivisie/index.html#code",
-    "title": "Predicting the Eredivisie using a Bayesian Approach",
-    "section": "Code",
-    "text": "Code"
-  },
-  {
-    "objectID": "talks/20260526_eredivisie/index.html#sample",
-    "href": "talks/20260526_eredivisie/index.html#sample",
-    "title": "Predicting the Eredivisie using a Bayesian Approach",
-    "section": "Sample",
-    "text": "Sample\n\n\n\n\n\n\n\n\narray([&lt;Axes: title={'center': '94.0% HDI'}&gt;], dtype=object)"
-  },
-  {
-    "objectID": "talks/20260609_statistical_inference/index.html#introduction",
-    "href": "talks/20260609_statistical_inference/index.html#introduction",
-    "title": "Statistical Inference",
-    "section": "Introduction",
-    "text": "Introduction\n\n\n\n\n\n\nStatistical inference\n\n\n\n“[…] notion of inference, which refers to the process of making probabilistic statements about the entire population under scrutiny by only looking at a small part of it.” (Kula and Koçer 2020)\n“Among the key concepts in statistics is making conclusions about a population using information in a sample; the process is called statistical inference.” (Çetinkaya-Rundel and Hardin 2024)"
-  },
-  {
-    "objectID": "talks/20260609_statistical_inference/index.html#references",
-    "href": "talks/20260609_statistical_inference/index.html#references",
-    "title": "Statistical Inference",
-    "section": "References",
-    "text": "References\n\n\nÇetinkaya-Rundel, Mine, and Johanna Hardin. 2024. Introduction to Modern Statistics. 2nd ed. OpenIntro, Inc.\n\n\nKula, Fulya, and Rüya Gökhan Koçer. 2020. “Why Is It Difficult to Understand Statistical Inference? Reflections on the Opposing Directions of Construction and Application of Inference Framework.” Teaching Mathematics and Its Applications: An International Journal of the IMA 39 (4): 248–65. https://doi.org/10.1093/teamat/hrz014."
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#introduction",
-    "href": "talks/20260609_bayes_learning/index.html#introduction",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Introduction",
-    "text": "Introduction\nLinear model: \\[\ny_{i} = \\beta_{0} + \\beta_{1} x_{i} + \\epsilon_{i}, \\quad \\epsilon \\overset{\\text{iid}}{\\sim} \\mathrm{N}(0, \\sigma^{2})\n\\] for \\(i = 1, \\ldots, N\\) data points.\nSimilarly, we can write: \\[\ny_{i} \\overset{\\text{ind}}{\\sim} \\mathrm{N}(\\beta_{0} + \\beta_{1} x_{i}, \\sigma^{2})\n\\]"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#simulated-data",
-    "href": "talks/20260609_bayes_learning/index.html#simulated-data",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Simulated data",
-    "text": "Simulated data\nWe generate synthetic data from the function:\n\\[\n\\begin{align}\ny = f(x; \\beta_{0}, \\beta_{1}) &= \\beta_{0} + \\beta_{1} x \\\\\n&= -0.3 + 0.5 x\n\\end{align}\n\\]\nFor \\(i = 1, \\ldots, N\\):\n\nChoose a value \\(x_{i} \\sim \\mathrm{U}(x \\mid -1, 1)\\)\nCompuate \\(y_{i} = f(x_{i})\\)\nAdd Gaussian noise with standard deviation \\(\\sigma = 0.2\\)"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#sequential-learning",
-    "href": "talks/20260609_bayes_learning/index.html#sequential-learning",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Sequential learning",
-    "text": "Sequential learning\nBefore (i.e. “prior” to) observing any data, we belief that the intercept (\\(\\beta_{0}\\)) and slope (\\(\\beta_{1}\\)) can take many values, but they are centered around 0 with some uncertainty. We model this by assuming that they are derived from a normal distribution.\n\n\nCode\n# Prior\nm = np.zeros(2)\nC = (1 / 2.0) * np.eye(2)  # precision parameter alpha = 2, Eq. (3.52), p. 153\n\nXX, YY = np.mgrid[-1:1.01:0.01, -1:1.01:0.01]\npts = np.dstack((XX, YY))\n\n_, ax = plt.subplots(figsize=(3, 3))\nax.contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))\nax.set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\nax.set_aspect(\"equal\")\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#sample",
-    "href": "talks/20260609_bayes_learning/index.html#sample",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Sample",
-    "text": "Sample\nWe can sample some random combinations of intercept and slope (\\(\\beta_{0}\\), \\(\\beta_{1}\\))"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#sample-parameters",
-    "href": "talks/20260609_bayes_learning/index.html#sample-parameters",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Sample parameters",
-    "text": "Sample parameters\nWe can sample some random combinations of intercept and slope (\\(\\beta_{0}\\), \\(\\beta_{1}\\)) from the joint distribution.\n\n\nCode\nbetas = multivariate_normal.rvs(mean=m, cov=C, size=10)\n\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C), alpha=0.5)\naxs[0].plot(betas[0][0], betas[0][1], \"x\", mec=\"k\")\naxs[0].set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\n\naxs[1].plot(xx, betas[0][0] + betas[0][1] * xx, c=\"r\")\naxs[1].plot(xx, b0 + b1 * xx, c=\"lightgray\")\naxs[1].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\n\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#sample-parameters-1",
-    "href": "talks/20260609_bayes_learning/index.html#sample-parameters-1",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Sample parameters",
-    "text": "Sample parameters\nWe can sample some random combinations of intercept and slope (\\(\\beta_{0}\\), \\(\\beta_{1}\\)) from the joint distribution.\n\n\nCode\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))\naxs[0].plot(betas[:, 0], betas[:, 1], \"x\", mec=\"k\")\naxs[0].set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\n\naxs[1].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\")\naxs[1].plot(xx, b0 + b1 * xx, c=\"lightgray\")\naxs[1].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\n\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#get-some-data",
-    "href": "talks/20260609_bayes_learning/index.html#get-some-data",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Get some data",
-    "text": "Get some data\n\nWe observe our first data point, (\\(x_{1}, y_{1}\\))\nWe compute the likelihood of that data point given (\\(\\beta_{0}, \\beta_{1}\\)): \\[\np(y_{1} \\mid \\beta_{0}, \\beta_{1}, x_{1})\n\\]\n\n\n\nCode\n# Compute the likelihood of the first data point\n# for all combinations of slope and intercept\nlikelihood = norm.pdf(ys[0], loc=XX + YY * xs[0], scale=sigma)\n\n# Plot the data point, and the likelihood\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\", alpha=0.2)\naxs[0].plot(xx, b0 + b1 * xx, c=\"gray\")\naxs[0].plot(xs[0], ys[0], \"o\", mfc=\"none\", mec=\"dodgerblue\", mew=2)\naxs[0].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\naxs[1].contourf(XX, YY, likelihood, alpha=0.7)\naxs[1].set(xlabel=\"intercept, $\\\\beta_0$\", ylabel=\"slope, $\\\\beta_1$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#update-our-belief",
-    "href": "talks/20260609_bayes_learning/index.html#update-our-belief",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Update our belief",
-    "text": "Update our belief\nAfter (“posterior”) observing the data point, we can narrow down the uncertainties of the intercept and slope using Bayes’ rule: \\[\np(\\beta_{0}, \\beta_{1} \\mid y_{1}) \\propto p(y_{1} \\mid \\beta_{0}, \\beta_{1})\\ p(\\beta_{0}, \\beta_{1})\n\\]\n\n\nCode\ndef update_params(m_prior, C_prior, x_i, y_i, beta=25.0):\n    \"\"\"Update the model parameters.\n\n    Parameters\n    ----------\n    m_prior : np.ndarray\n        The prior for the mean.\n    C_prior: np.ndarray\n        The prior for the variance-covariance matrix.\n    x_i, y_i : float\n        The data point.\n    beta : float\n        The precision.\n    \n    Returns\n    -------\n    m_post : np.ndarray\n        The posterior of the mean.\n    C_post : np.ndarray\n        The posterior of the variance-covariance matrix.\n    \"\"\"\n\n    # Design vector `phi` for a linear fit: [1, x]\n    phi = np.array([1.0, x_i])\n\n    # Compute the inverse of the prior covariance\n    C_prior_inv = np.linalg.inv(C_prior)\n\n    # Update the variance-covariance matrix\n    C_post_inv = C_prior_inv + beta * np.outer(phi, phi)\n    C_post = np.linalg.inv(C_post_inv)\n\n    # Update the mean\n    m_post = C_post @ (C_prior_inv @ m_prior + beta * y_i * phi)\n    return m_post, C_post\n\nms, Cs = [], []\nfor i, (x_i, y_i) in enumerate(zip(xs, ys)):\n    if i == 0:\n        m_post, C_post = update_params(m_prior=m, C_prior=C, x_i=x_i, y_i=y_i, beta=tau)\n        ms.append(m_post)\n        Cs.append(C_post)\n    else:\n        m_post, C_post = update_params(\n            m_prior=ms[-1],\n            C_prior=Cs[-1],\n            x_i=x_i,\n            y_i=y_i,\n            beta=tau\n        )\n        ms.append(m_post)\n        Cs.append(C_post)\n\n_, axs = plt.subplots(1, 3, sharex=True, sharey=True, figsize=(9, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))\naxs[1].contourf(XX, YY, likelihood)\naxs[2].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))\nfor ax in axs:\n    ax.set(xlabel=f\"intercept, $\\\\beta_0$\", ylabel=f\"slope, $\\\\beta_1$\", xlim=xlim, ylim=ylim)\naxs[0].set_title(\"prior\")\naxs[1].set_title(\"likelihood\")\naxs[2].set_title(\"posterior\")\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#simluated-data",
-    "href": "talks/20260609_bayes_learning/index.html#simluated-data",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Simluated data",
-    "text": "Simluated data\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib.gridspec import GridSpec\nfrom scipy.stats import norm, multivariate_normal\nplt.rcParams.update({\n    \"figure.constrained_layout.use\": True\n})\nnp.random.seed(1612)\n\n# Figure settings\nxlim, ylim = (-1., 1.), (-1., 1.)\n\n# True parameters\nb0, b1 = -0.3, 0.5\nsigma = 0.2\ntau = (1 / sigma)**2\n\n# Sample N=20 data points (but process them sequentially)\nN = 20\nxs = np.random.uniform(low=-1, high=1, size=N)\nys = b0 + b1 * xs\nys = ys + np.random.normal(loc=0, scale=sigma)"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#simulated-data-1",
-    "href": "talks/20260609_bayes_learning/index.html#simulated-data-1",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Simulated data",
-    "text": "Simulated data\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib.gridspec import GridSpec\nfrom scipy.stats import norm, multivariate_normal\nplt.rcParams.update({\n    \"figure.constrained_layout.use\": True,\n    \"axes.spines.top\": False,\n    \"axes.spines.right\": False\n})\nnp.random.seed(1612)\n\n# Figure settings\nxlim, ylim = (-1., 1.), (-1., 1.)\nxx = np.linspace(-1, 1, 101, endpoint=True)\n\n# True parameters\nb0, b1 = -0.3, 0.5    # intercept and slope\nsigma = 0.2           # standard deviation of the noise\ntau = (1 / sigma)**2  # precision\n\n# Sample N=20 data points (but process them sequentially)\nN = 20\nxs = np.random.uniform(low=-1, high=1, size=N)\nys = b0 + b1 * xs\nys = ys + np.random.normal(loc=0, scale=sigma, size=len(xs))\n\n# Plot\n_, ax = plt.subplots(figsize=(3, 3))\nax.plot(xx, b0 + b1 * xx, c=\"lightgray\", lw=2)\nax.plot(xs, ys, \"o\", mec=\"dodgerblue\", mfc=\"none\", mew=2)\n# ax.spines[\"bottom\"].set_position(\"zero\")\nax.set(xlabel=\"x\", ylabel=\"y\", xlim=xlim, ylim=ylim)\nax.set_aspect(\"equal\")\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#simulate-data",
-    "href": "talks/20260609_bayes_learning/index.html#simulate-data",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Simulate data",
-    "text": "Simulate data\nWe generate synthetic data (Bishop 2006) from the function:\n\\[\n\\begin{align}\ny = f(x; \\beta_{0}, \\beta_{1}) &= \\beta_{0} + \\beta_{1} x \\\\\n&= -0.3 + 0.5 x\n\\end{align}\n\\]\nFor \\(i = 1, \\ldots, N\\):\n\nChoose a value \\(x_{i} \\sim \\mathrm{U}(x \\mid -1, 1)\\)\nCompuate \\(y_{i} = f(x_{i})\\)\nAdd Gaussian noise with standard deviation \\(\\sigma = 0.2\\)"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#simulate-data-1",
-    "href": "talks/20260609_bayes_learning/index.html#simulate-data-1",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Simulate data",
-    "text": "Simulate data\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib.gridspec import GridSpec\nfrom scipy.stats import norm, multivariate_normal\nplt.rcParams.update({\n    \"figure.constrained_layout.use\": True,\n    \"axes.spines.top\": False,\n    \"axes.spines.right\": False\n})\nnp.random.seed(123)\n\n# Figure settings\nxlim, ylim = (-1., 1.), (-1., 1.)\nxx = np.linspace(-1, 1, 101, endpoint=True)\n\n# True parameters\nb0, b1 = -0.3, 0.5    # intercept and slope\nsigma = 0.2           # standard deviation of the noise\ntau = (1 / sigma)**2  # precision\n\n# Sample N=20 data points (but process them sequentially)\nN = 20\nxs = np.random.uniform(low=-1, high=1, size=N)\nys = b0 + b1 * xs\nys = ys + np.random.normal(loc=0, scale=sigma, size=len(xs))\n\n# Plot\n_, ax = plt.subplots(figsize=(3, 3))\nax.plot(xx, b0 + b1 * xx, c=\"lightgray\", lw=2)\nax.plot(xs, ys, \"o\", mec=\"dodgerblue\", mfc=\"none\", mew=2)\n# ax.spines[\"bottom\"].set_position(\"zero\")\nax.set(xlabel=\"x\", ylabel=\"y\", xlim=xlim, ylim=ylim)\nax.set_aspect(\"equal\")\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#get-some-more-data",
-    "href": "talks/20260609_bayes_learning/index.html#get-some-more-data",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Get some more data",
-    "text": "Get some more data\n\nWe observe our next data point, (\\(x_{2}, y_{2}\\))\nWe compute the likelihood of that data point given (\\(\\beta_{0}, \\beta_{1}\\)): \\[\np(y_{2} \\mid \\beta_{0}, \\beta_{1}, (x_{1}, y_{1}), x_{2})\n\\]\n\n\n\nCode\n# Compute the likelihood of the first data point\n# for all combinations of slope and intercept\nlikelihood = norm.pdf(ys[1], loc=XX + YY * xs[1], scale=sigma)\n\n# Plot the data point, and the likelihood\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\", alpha=0.2)\naxs[0].plot(xx, b0 + b1 * xx, c=\"gray\")\naxs[0].plot(xs[:2], ys[:2], \"o\", mfc=\"none\", mec=\"dodgerblue\", mew=2)\naxs[0].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\naxs[1].contourf(XX, YY, likelihood, alpha=0.7)\naxs[1].set(xlabel=\"intercept, $\\\\beta_0$\", ylabel=\"slope, $\\\\beta_1$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#sample-parameters-2",
-    "href": "talks/20260609_bayes_learning/index.html#sample-parameters-2",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Sample parameters",
-    "text": "Sample parameters\n\n\nCode\nbetas = multivariate_normal.rvs(mean=ms[0], cov=Cs[0], size=10)\n\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))\naxs[0].plot(betas[:, 0], betas[:, 1], \"x\", mec=\"k\")\naxs[0].set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\n\naxs[1].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\")\naxs[1].plot(xx, b0 + b1 * xx, c=\"lightgray\")\naxs[1].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#update-our-beliefs",
-    "href": "talks/20260609_bayes_learning/index.html#update-our-beliefs",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Update our beliefs",
-    "text": "Update our beliefs\nWe update our beliefs using the prior and the likelihood\n\n\nCode\n_, axs = plt.subplots(1, 3, sharex=True, sharey=True, figsize=(9, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))\naxs[1].contourf(XX, YY, likelihood)\naxs[2].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[1], cov=Cs[1]))\nfor ax in axs:\n    ax.set(xlabel=f\"intercept, $\\\\beta_0$\", ylabel=f\"slope, $\\\\beta_1$\", xlim=xlim, ylim=ylim)\naxs[0].set_title(\"prior\")\naxs[1].set_title(\"likelihood\")\naxs[2].set_title(\"posterior\")\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#get-some-more-data-1",
-    "href": "talks/20260609_bayes_learning/index.html#get-some-more-data-1",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Get some more data",
-    "text": "Get some more data\nWe continue this process iteratively\n\n\nCode\n_, axs = plt.subplots(2, 4, sharex=True, sharey=True, figsize=(12, 3))\n\nfor col_idx, n in enumerate([3, 8, 12, 19]):\n    axs[0, col_idx].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[n], cov=Cs[n]))\n\n    betas = multivariate_normal.rvs(mean=ms[n], cov=Cs[n], size=10)\n    axs[0, col_idx].plot(betas[:, 0], betas[:, 1], \"x\", mec=\"k\")\n\n    axs[1, col_idx].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\")\n    axs[1, col_idx].plot(xx, b0 + b1 * xx, c=\"k\")\n    axs[1, col_idx].plot(xs[:n], ys[:n], \"o\", mfc=\"none\", mec=\"dodgerblue\", mew=2)\n\n    axs[0, col_idx].set_xlim(xlim)\n    axs[0, col_idx].set_ylim(ylim)\n    axs[0, col_idx].set_aspect(\"equal\")\n    axs[1, col_idx].set_ylim(ylim)\n    axs[1, col_idx].set_aspect(\"equal\")\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#references",
-    "href": "talks/20260609_bayes_learning/index.html#references",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "References",
-    "text": "References\n\n\nBishop, Christopher M. 2006. “Chapter 3: Linear Models for Regression.” In Pattern Recognition and Machine Learning, 137–78. Springer Science+Business Media, LLC.\n\n\nBruijn, Sjoerd M., and Jaap H. van Dieën. 2018. “Control of Human Gait Stability Through Foot Placement.” Journal of The Royal Society Interface 15 (143): 20170816. https://doi.org/10.1098/rsif.2017.0816.\n\n\nLang, Charlotte, Deepak K. Ravi, Sjoerd M. Bruijn, Jeffrey M. Hausdorff, Jaap H. van Dieën, and Anina Moira van Leeuwen. 2026. “How Do We Tread? Differences in Stability-Related Foot Placement Control Between Overground and Treadmill Walking in Young Adults.” PLOS One 21 (3): e0344704. https://doi.org/10.1371/journal.pone.0344704."
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#parameter-estimates",
-    "href": "talks/20260609_bayes_learning/index.html#parameter-estimates",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Parameter estimates",
-    "text": "Parameter estimates\nFinally, after observing \\(N = 20\\) data points, we have the following estimates for the intercept and slope:\n\n\nCode\n_, axs = plt.subplots(1, 2, figsize=(6, 3))\naxs[0].plot(xx, norm.pdf(xx, loc=ms[-1][0], scale=Cs[-1][0, 0]))\naxs[0].axvline(b0, c=\"k\")\naxs[1].plot(xx, norm.pdf(xx, loc=ms[-1][1], scale=Cs[-1][1, 1]))\naxs[1].axvline(b1, c=\"k\")\nplt.show()"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#discussion",
-    "href": "talks/20260609_bayes_learning/index.html#discussion",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Discussion",
-    "text": "Discussion\nFoot placement\n\nStable gait is defined as gait that does not lead to falls (Bruijn and Dieën 2018).\nFoot placement is one control mechanism of to establish stable gait (Lang et al. 2026).\nFoot placement models typically model step width (SW) and step length (SL).\n\n\\[\n\\begin{align}\n\\mathrm{SW} &= \\beta_{0} + \\beta_{\\mathrm{pos}_{\\mathrm{ml}}} \\mathrm{CoM}_{\\mathrm{pos}_{\\mathrm{ml}}} + \\beta_{\\mathrm{vel}_{\\mathrm{ml}}} \\mathrm{CoM}_{\\mathrm{vel}_{\\mathrm{ml}}} + \\epsilon_{\\mathrm{ml}} \\\\\n\\mathrm{SL} &= \\beta_{0} + \\beta_{\\mathrm{pos}_{\\mathrm{ap}}} \\mathrm{CoM}_{\\mathrm{pos}_{\\mathrm{ap}}} + \\beta_{\\mathrm{vel}_{\\mathrm{ap}}} \\mathrm{CoM}_{\\mathrm{vel}_{\\mathrm{ap}}} + \\epsilon_{\\mathrm{ap}}\n\\end{align}\n\\]"
-  },
-  {
-    "objectID": "talks/20260609_bayes_learning/index.html#using-pymc",
-    "href": "talks/20260609_bayes_learning/index.html#using-pymc",
-    "title": "Sequential Bayesian Learning: Linear Regression",
-    "section": "Using pymc",
-    "text": "Using pymc\n\n\nCode\nimport pymc as pm\nimport arviz as az\n\nwith pm.Model() as lin_model:\n    # Priors\n    alpha = 2.0\n    beta_0 = pm.Normal(\"beta_0\", mu=0, tau=alpha)\n    beta_1 = pm.Normal(\"beta_1\", mu=0, tau=alpha)\n\n    # Likelihood\n    mu = beta_0 + beta_1 * xs\n    y_obs = pm.Normal(\"y_obs\", mu=mu, sigma=sigma, observed=ys)\n\n    # Infernece\n    trace = pm.sample(draws=5000, tune=2000, return_inferencedata=True)\n\n_, axs = plt.subplots(2, 2)\naz.plot_trace(trace, axes=axs)\naxs[0, 0].axvline(b0, c=\"k\")\naxs[1, 0].axvline(b1, c=\"k\")\nfor ax in axs[0, :]:\n    ax.set_ylabel(f\"intercept, $\\\\beta_0$\")\nfor ax in axs[1, :]:\n    ax.set_ylabel(f\"slope, $\\\\beta_1$\")\nplt.show()"
   }
 ]
