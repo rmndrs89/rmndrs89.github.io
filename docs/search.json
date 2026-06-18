@@ -263,7 +263,7 @@
     "href": "talks.html",
     "title": "Talks",
     "section": "",
-    "text": "Simulate data\n\n\n\n\n\n\n\n\n\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nPredicting the Eredivisie using a Bayesian Approach\n\n\n\n\n\n\n\n\n\n\n\nMay 26, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nLocation and scale mixture of AR model\n\n\n\n\n\nBayesian estimation of a mixture of AR models \n\n\n\n\n\nMay 6, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nBayesian estimation supersedes the \\(t\\) test\n\n\n\n\n\n\n\n\n\n\n\nMay 6, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nHidden Markov Models\n\n\n\n\n\nApplications of Hidden Markov Models in Tracking the State of Health \n\n\n\n\n\nFeb 3, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nThe Curious Case of Thomas Bayes\n\n\n\n\n\nWhat is Bayesian analysis and why should you use it? \n\n\n\n\n\nJan 6, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\nNo matching items"
+    "text": "Sequential Bayesian Learning: Linear Regression\n\n\n\n\n\n\n\n\n\n\n\nJun 9, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\n\n\n\n\n\n\nThe Curious Case of Thomas Bayes\n\n\n\n\n\nWhat is Bayesian analysis and why should you use it? \n\n\n\n\n\nJan 6, 2026\n\n\nRobbin Romijnders\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/20251112_first_post/index.html",
@@ -320,5 +320,159 @@
     "title": "Predicting the Eredivisie using a Bayesian Approach",
     "section": "Sample",
     "text": "Sample\n\n\n\n\n\n\n\n\narray([&lt;Axes: title={'center': '94.0% HDI'}&gt;], dtype=object)"
+  },
+  {
+    "objectID": "talks/20260609_statistical_inference/index.html#introduction",
+    "href": "talks/20260609_statistical_inference/index.html#introduction",
+    "title": "Statistical Inference",
+    "section": "Introduction",
+    "text": "Introduction\n\n\n\n\n\n\nStatistical inference\n\n\n\n“[…] notion of inference, which refers to the process of making probabilistic statements about the entire population under scrutiny by only looking at a small part of it.” (Kula and Koçer 2020)\n“Among the key concepts in statistics is making conclusions about a population using information in a sample; the process is called statistical inference.” (Çetinkaya-Rundel and Hardin 2024)"
+  },
+  {
+    "objectID": "talks/20260609_statistical_inference/index.html#references",
+    "href": "talks/20260609_statistical_inference/index.html#references",
+    "title": "Statistical Inference",
+    "section": "References",
+    "text": "References\n\n\nÇetinkaya-Rundel, Mine, and Johanna Hardin. 2024. Introduction to Modern Statistics. 2nd ed. OpenIntro, Inc.\n\n\nKula, Fulya, and Rüya Gökhan Koçer. 2020. “Why Is It Difficult to Understand Statistical Inference? Reflections on the Opposing Directions of Construction and Application of Inference Framework.” Teaching Mathematics and Its Applications: An International Journal of the IMA 39 (4): 248–65. https://doi.org/10.1093/teamat/hrz014."
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#introduction",
+    "href": "talks/20260609_bayes_learning/index.html#introduction",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Introduction",
+    "text": "Introduction\nLinear model: \\[\ny_{i} = \\beta_{0} + \\beta_{1} x_{i} + \\epsilon_{i}, \\quad \\epsilon \\overset{\\text{iid}}{\\sim} \\mathrm{N}(0, \\sigma^{2})\n\\] for \\(i = 1, \\ldots, N\\) data points.\nSimilarly, we can write: \\[\ny_{i} \\overset{\\text{ind}}{\\sim} \\mathrm{N}(\\beta_{0} + \\beta_{1} x_{i}, \\sigma^{2})\n\\]"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#simulated-data",
+    "href": "talks/20260609_bayes_learning/index.html#simulated-data",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Simulated data",
+    "text": "Simulated data\nWe generate synthetic data from the function:\n\\[\n\\begin{align}\ny = f(x; \\beta_{0}, \\beta_{1}) &= \\beta_{0} + \\beta_{1} x \\\\\n&= -0.3 + 0.5 x\n\\end{align}\n\\]\nFor \\(i = 1, \\ldots, N\\):\n\nChoose a value \\(x_{i} \\sim \\mathrm{U}(x \\mid -1, 1)\\)\nCompuate \\(y_{i} = f(x_{i})\\)\nAdd Gaussian noise with standard deviation \\(\\sigma = 0.2\\)"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#sequential-learning",
+    "href": "talks/20260609_bayes_learning/index.html#sequential-learning",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Sequential learning",
+    "text": "Sequential learning\nBefore (i.e. “prior” to) observing any data, we belief that the intercept (\\(\\beta_{0}\\)) and slope (\\(\\beta_{1}\\)) can take many values, but they are centered around 0 with some uncertainty. We model this by assuming that they are derived from a normal distribution.\n\n\nCode\n# Prior\nm = np.zeros(2)\nC = (1 / 2.0) * np.eye(2)  # precision parameter alpha = 2, Eq. (3.52), p. 153\n\nXX, YY = np.mgrid[-1:1.01:0.01, -1:1.01:0.01]\npts = np.dstack((XX, YY))\n\n_, ax = plt.subplots(figsize=(3, 3))\nax.contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))\nax.set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\nax.set_aspect(\"equal\")\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#sample",
+    "href": "talks/20260609_bayes_learning/index.html#sample",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Sample",
+    "text": "Sample\nWe can sample some random combinations of intercept and slope (\\(\\beta_{0}\\), \\(\\beta_{1}\\))"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#sample-parameters",
+    "href": "talks/20260609_bayes_learning/index.html#sample-parameters",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Sample parameters",
+    "text": "Sample parameters\nWe can sample some random combinations of intercept and slope (\\(\\beta_{0}\\), \\(\\beta_{1}\\)) from the joint distribution.\n\n\nCode\nbetas = multivariate_normal.rvs(mean=m, cov=C, size=10)\n\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C), alpha=0.5)\naxs[0].plot(betas[0][0], betas[0][1], \"x\", mec=\"k\")\naxs[0].set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\n\naxs[1].plot(xx, betas[0][0] + betas[0][1] * xx, c=\"r\")\naxs[1].plot(xx, b0 + b1 * xx, c=\"lightgray\")\naxs[1].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\n\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#sample-parameters-1",
+    "href": "talks/20260609_bayes_learning/index.html#sample-parameters-1",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Sample parameters",
+    "text": "Sample parameters\nWe can sample some random combinations of intercept and slope (\\(\\beta_{0}\\), \\(\\beta_{1}\\)) from the joint distribution.\n\n\nCode\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))\naxs[0].plot(betas[:, 0], betas[:, 1], \"x\", mec=\"k\")\naxs[0].set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\n\naxs[1].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\")\naxs[1].plot(xx, b0 + b1 * xx, c=\"lightgray\")\naxs[1].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\n\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#get-some-data",
+    "href": "talks/20260609_bayes_learning/index.html#get-some-data",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Get some data",
+    "text": "Get some data\n\nWe observe our first data point, (\\(x_{1}, y_{1}\\))\nWe compute the likelihood of that data point given (\\(\\beta_{0}, \\beta_{1}\\)): \\[\np(y_{1} \\mid \\beta_{0}, \\beta_{1}, x_{1})\n\\]\n\n\n\nCode\n# Compute the likelihood of the first data point\n# for all combinations of slope and intercept\nlikelihood = norm.pdf(ys[0], loc=XX + YY * xs[0], scale=sigma)\n\n# Plot the data point, and the likelihood\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\", alpha=0.2)\naxs[0].plot(xx, b0 + b1 * xx, c=\"gray\")\naxs[0].plot(xs[0], ys[0], \"o\", mfc=\"none\", mec=\"dodgerblue\", mew=2)\naxs[0].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\naxs[1].contourf(XX, YY, likelihood, alpha=0.7)\naxs[1].set(xlabel=\"intercept, $\\\\beta_0$\", ylabel=\"slope, $\\\\beta_1$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#update-our-belief",
+    "href": "talks/20260609_bayes_learning/index.html#update-our-belief",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Update our belief",
+    "text": "Update our belief\nAfter (“posterior”) observing the data point, we can narrow down the uncertainties of the intercept and slope using Bayes’ rule: \\[\np(\\beta_{0}, \\beta_{1} \\mid y_{1}) \\propto p(y_{1} \\mid \\beta_{0}, \\beta_{1})\\ p(\\beta_{0}, \\beta_{1})\n\\]\n\n\nCode\ndef update_params(m_prior, C_prior, x_i, y_i, beta=25.0):\n    \"\"\"Update the model parameters.\n\n    Parameters\n    ----------\n    m_prior : np.ndarray\n        The prior for the mean.\n    C_prior: np.ndarray\n        The prior for the variance-covariance matrix.\n    x_i, y_i : float\n        The data point.\n    beta : float\n        The precision.\n    \n    Returns\n    -------\n    m_post : np.ndarray\n        The posterior of the mean.\n    C_post : np.ndarray\n        The posterior of the variance-covariance matrix.\n    \"\"\"\n\n    # Design vector `phi` for a linear fit: [1, x]\n    phi = np.array([1.0, x_i])\n\n    # Compute the inverse of the prior covariance\n    C_prior_inv = np.linalg.inv(C_prior)\n\n    # Update the variance-covariance matrix\n    C_post_inv = C_prior_inv + beta * np.outer(phi, phi)\n    C_post = np.linalg.inv(C_post_inv)\n\n    # Update the mean\n    m_post = C_post @ (C_prior_inv @ m_prior + beta * y_i * phi)\n    return m_post, C_post\n\nms, Cs = [], []\nfor i, (x_i, y_i) in enumerate(zip(xs, ys)):\n    if i == 0:\n        m_post, C_post = update_params(m_prior=m, C_prior=C, x_i=x_i, y_i=y_i, beta=tau)\n        ms.append(m_post)\n        Cs.append(C_post)\n    else:\n        m_post, C_post = update_params(\n            m_prior=ms[-1],\n            C_prior=Cs[-1],\n            x_i=x_i,\n            y_i=y_i,\n            beta=tau\n        )\n        ms.append(m_post)\n        Cs.append(C_post)\n\n_, axs = plt.subplots(1, 3, sharex=True, sharey=True, figsize=(9, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))\naxs[1].contourf(XX, YY, likelihood)\naxs[2].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))\nfor ax in axs:\n    ax.set(xlabel=f\"intercept, $\\\\beta_0$\", ylabel=f\"slope, $\\\\beta_1$\", xlim=xlim, ylim=ylim)\naxs[0].set_title(\"prior\")\naxs[1].set_title(\"likelihood\")\naxs[2].set_title(\"posterior\")\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#simluated-data",
+    "href": "talks/20260609_bayes_learning/index.html#simluated-data",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Simluated data",
+    "text": "Simluated data\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib.gridspec import GridSpec\nfrom scipy.stats import norm, multivariate_normal\nplt.rcParams.update({\n    \"figure.constrained_layout.use\": True\n})\nnp.random.seed(1612)\n\n# Figure settings\nxlim, ylim = (-1., 1.), (-1., 1.)\n\n# True parameters\nb0, b1 = -0.3, 0.5\nsigma = 0.2\ntau = (1 / sigma)**2\n\n# Sample N=20 data points (but process them sequentially)\nN = 20\nxs = np.random.uniform(low=-1, high=1, size=N)\nys = b0 + b1 * xs\nys = ys + np.random.normal(loc=0, scale=sigma)"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#simulated-data-1",
+    "href": "talks/20260609_bayes_learning/index.html#simulated-data-1",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Simulated data",
+    "text": "Simulated data\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib.gridspec import GridSpec\nfrom scipy.stats import norm, multivariate_normal\nplt.rcParams.update({\n    \"figure.constrained_layout.use\": True,\n    \"axes.spines.top\": False,\n    \"axes.spines.right\": False\n})\nnp.random.seed(1612)\n\n# Figure settings\nxlim, ylim = (-1., 1.), (-1., 1.)\nxx = np.linspace(-1, 1, 101, endpoint=True)\n\n# True parameters\nb0, b1 = -0.3, 0.5    # intercept and slope\nsigma = 0.2           # standard deviation of the noise\ntau = (1 / sigma)**2  # precision\n\n# Sample N=20 data points (but process them sequentially)\nN = 20\nxs = np.random.uniform(low=-1, high=1, size=N)\nys = b0 + b1 * xs\nys = ys + np.random.normal(loc=0, scale=sigma, size=len(xs))\n\n# Plot\n_, ax = plt.subplots(figsize=(3, 3))\nax.plot(xx, b0 + b1 * xx, c=\"lightgray\", lw=2)\nax.plot(xs, ys, \"o\", mec=\"dodgerblue\", mfc=\"none\", mew=2)\n# ax.spines[\"bottom\"].set_position(\"zero\")\nax.set(xlabel=\"x\", ylabel=\"y\", xlim=xlim, ylim=ylim)\nax.set_aspect(\"equal\")\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#simulate-data",
+    "href": "talks/20260609_bayes_learning/index.html#simulate-data",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Simulate data",
+    "text": "Simulate data\nWe generate synthetic data (Bishop 2006) from the function:\n\\[\n\\begin{align}\ny = f(x; \\beta_{0}, \\beta_{1}) &= \\beta_{0} + \\beta_{1} x \\\\\n&= -0.3 + 0.5 x\n\\end{align}\n\\]\nFor \\(i = 1, \\ldots, N\\):\n\nChoose a value \\(x_{i} \\sim \\mathrm{U}(x \\mid -1, 1)\\)\nCompuate \\(y_{i} = f(x_{i})\\)\nAdd Gaussian noise with standard deviation \\(\\sigma = 0.2\\)"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#simulate-data-1",
+    "href": "talks/20260609_bayes_learning/index.html#simulate-data-1",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Simulate data",
+    "text": "Simulate data\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\nfrom matplotlib.gridspec import GridSpec\nfrom scipy.stats import norm, multivariate_normal\nplt.rcParams.update({\n    \"figure.constrained_layout.use\": True,\n    \"axes.spines.top\": False,\n    \"axes.spines.right\": False\n})\nnp.random.seed(123)\n\n# Figure settings\nxlim, ylim = (-1., 1.), (-1., 1.)\nxx = np.linspace(-1, 1, 101, endpoint=True)\n\n# True parameters\nb0, b1 = -0.3, 0.5    # intercept and slope\nsigma = 0.2           # standard deviation of the noise\ntau = (1 / sigma)**2  # precision\n\n# Sample N=20 data points (but process them sequentially)\nN = 20\nxs = np.random.uniform(low=-1, high=1, size=N)\nys = b0 + b1 * xs\nys = ys + np.random.normal(loc=0, scale=sigma, size=len(xs))\n\n# Plot\n_, ax = plt.subplots(figsize=(3, 3))\nax.plot(xx, b0 + b1 * xx, c=\"lightgray\", lw=2)\nax.plot(xs, ys, \"o\", mec=\"dodgerblue\", mfc=\"none\", mew=2)\n# ax.spines[\"bottom\"].set_position(\"zero\")\nax.set(xlabel=\"x\", ylabel=\"y\", xlim=xlim, ylim=ylim)\nax.set_aspect(\"equal\")\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#get-some-more-data",
+    "href": "talks/20260609_bayes_learning/index.html#get-some-more-data",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Get some more data",
+    "text": "Get some more data\n\nWe observe our next data point, (\\(x_{2}, y_{2}\\))\nWe compute the likelihood of that data point given (\\(\\beta_{0}, \\beta_{1}\\)): \\[\np(y_{2} \\mid \\beta_{0}, \\beta_{1}, (x_{1}, y_{1}), x_{2})\n\\]\n\n\n\nCode\n# Compute the likelihood of the first data point\n# for all combinations of slope and intercept\nlikelihood = norm.pdf(ys[1], loc=XX + YY * xs[1], scale=sigma)\n\n# Plot the data point, and the likelihood\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\", alpha=0.2)\naxs[0].plot(xx, b0 + b1 * xx, c=\"gray\")\naxs[0].plot(xs[:2], ys[:2], \"o\", mfc=\"none\", mec=\"dodgerblue\", mew=2)\naxs[0].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\naxs[1].contourf(XX, YY, likelihood, alpha=0.7)\naxs[1].set(xlabel=\"intercept, $\\\\beta_0$\", ylabel=\"slope, $\\\\beta_1$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#sample-parameters-2",
+    "href": "talks/20260609_bayes_learning/index.html#sample-parameters-2",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Sample parameters",
+    "text": "Sample parameters\n\n\nCode\nbetas = multivariate_normal.rvs(mean=ms[0], cov=Cs[0], size=10)\n\n_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))\naxs[0].plot(betas[:, 0], betas[:, 1], \"x\", mec=\"k\")\naxs[0].set(xlabel=\"intercept, $\\\\beta_{0}$\", ylabel=\"slope, $\\\\beta_{1}$\")\n\naxs[1].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\")\naxs[1].plot(xx, b0 + b1 * xx, c=\"lightgray\")\naxs[1].set(xlabel=\"$x$\", ylabel=\"$y$\")\n\nfor ax in axs:\n    ax.set(xlim=xlim, ylim=ylim)\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#update-our-beliefs",
+    "href": "talks/20260609_bayes_learning/index.html#update-our-beliefs",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Update our beliefs",
+    "text": "Update our beliefs\nWe update our beliefs using the prior and the likelihood\n\n\nCode\n_, axs = plt.subplots(1, 3, sharex=True, sharey=True, figsize=(9, 3))\naxs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))\naxs[1].contourf(XX, YY, likelihood)\naxs[2].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[1], cov=Cs[1]))\nfor ax in axs:\n    ax.set(xlabel=f\"intercept, $\\\\beta_0$\", ylabel=f\"slope, $\\\\beta_1$\", xlim=xlim, ylim=ylim)\naxs[0].set_title(\"prior\")\naxs[1].set_title(\"likelihood\")\naxs[2].set_title(\"posterior\")\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#get-some-more-data-1",
+    "href": "talks/20260609_bayes_learning/index.html#get-some-more-data-1",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Get some more data",
+    "text": "Get some more data\nWe continue this process iteratively\n\n\nCode\n_, axs = plt.subplots(2, 4, sharex=True, sharey=True, figsize=(12, 3))\n\nfor col_idx, n in enumerate([3, 8, 12, 19]):\n    axs[0, col_idx].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[n], cov=Cs[n]))\n\n    betas = multivariate_normal.rvs(mean=ms[n], cov=Cs[n], size=10)\n    axs[0, col_idx].plot(betas[:, 0], betas[:, 1], \"x\", mec=\"k\")\n\n    axs[1, col_idx].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c=\"r\")\n    axs[1, col_idx].plot(xx, b0 + b1 * xx, c=\"k\")\n    axs[1, col_idx].plot(xs[:n], ys[:n], \"o\", mfc=\"none\", mec=\"dodgerblue\", mew=2)\n\n    axs[0, col_idx].set_xlim(xlim)\n    axs[0, col_idx].set_ylim(ylim)\n    axs[0, col_idx].set_aspect(\"equal\")\n    axs[1, col_idx].set_ylim(ylim)\n    axs[1, col_idx].set_aspect(\"equal\")\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#references",
+    "href": "talks/20260609_bayes_learning/index.html#references",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "References",
+    "text": "References\n\n\nBishop, Christopher M. 2006. “Chapter 3: Linear Models for Regression.” In Pattern Recognition and Machine Learning, 137–78. Springer Science+Business Media, LLC.\n\n\nBruijn, Sjoerd M., and Jaap H. van Dieën. 2018. “Control of Human Gait Stability Through Foot Placement.” Journal of The Royal Society Interface 15 (143): 20170816. https://doi.org/10.1098/rsif.2017.0816.\n\n\nLang, Charlotte, Deepak K. Ravi, Sjoerd M. Bruijn, Jeffrey M. Hausdorff, Jaap H. van Dieën, and Anina Moira van Leeuwen. 2026. “How Do We Tread? Differences in Stability-Related Foot Placement Control Between Overground and Treadmill Walking in Young Adults.” PLOS One 21 (3): e0344704. https://doi.org/10.1371/journal.pone.0344704."
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#parameter-estimates",
+    "href": "talks/20260609_bayes_learning/index.html#parameter-estimates",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Parameter estimates",
+    "text": "Parameter estimates\nFinally, after observing \\(N = 20\\) data points, we have the following estimates for the intercept and slope:\n\n\nCode\n_, axs = plt.subplots(1, 2, figsize=(6, 3))\naxs[0].plot(xx, norm.pdf(xx, loc=ms[-1][0], scale=Cs[-1][0, 0]))\naxs[0].axvline(b0, c=\"k\")\naxs[1].plot(xx, norm.pdf(xx, loc=ms[-1][1], scale=Cs[-1][1, 1]))\naxs[1].axvline(b1, c=\"k\")\nplt.show()"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#discussion",
+    "href": "talks/20260609_bayes_learning/index.html#discussion",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Discussion",
+    "text": "Discussion\nFoot placement\n\nStable gait is defined as gait that does not lead to falls (Bruijn and Dieën 2018).\nFoot placement is one control mechanism of to establish stable gait (Lang et al. 2026).\nFoot placement models typically model step width (SW) and step length (SL).\n\n\\[\n\\begin{align}\n\\mathrm{SW} &= \\beta_{0} + \\beta_{\\mathrm{pos}_{\\mathrm{ml}}} \\mathrm{CoM}_{\\mathrm{pos}_{\\mathrm{ml}}} + \\beta_{\\mathrm{vel}_{\\mathrm{ml}}} \\mathrm{CoM}_{\\mathrm{vel}_{\\mathrm{ml}}} + \\epsilon_{\\mathrm{ml}} \\\\\n\\mathrm{SL} &= \\beta_{0} + \\beta_{\\mathrm{pos}_{\\mathrm{ap}}} \\mathrm{CoM}_{\\mathrm{pos}_{\\mathrm{ap}}} + \\beta_{\\mathrm{vel}_{\\mathrm{ap}}} \\mathrm{CoM}_{\\mathrm{vel}_{\\mathrm{ap}}} + \\epsilon_{\\mathrm{ap}}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "talks/20260609_bayes_learning/index.html#using-pymc",
+    "href": "talks/20260609_bayes_learning/index.html#using-pymc",
+    "title": "Sequential Bayesian Learning: Linear Regression",
+    "section": "Using pymc",
+    "text": "Using pymc\n\n\nCode\nimport pymc as pm\nimport arviz as az\n\nwith pm.Model() as lin_model:\n    # Priors\n    alpha = 2.0\n    beta_0 = pm.Normal(\"beta_0\", mu=0, tau=alpha)\n    beta_1 = pm.Normal(\"beta_1\", mu=0, tau=alpha)\n\n    # Likelihood\n    mu = beta_0 + beta_1 * xs\n    y_obs = pm.Normal(\"y_obs\", mu=mu, sigma=sigma, observed=ys)\n\n    # Infernece\n    trace = pm.sample(draws=5000, tune=2000, return_inferencedata=True)\n\n_, axs = plt.subplots(2, 2)\naz.plot_trace(trace, axes=axs)\naxs[0, 0].axvline(b0, c=\"k\")\naxs[1, 0].axvline(b1, c=\"k\")\nfor ax in axs[0, :]:\n    ax.set_ylabel(f\"intercept, $\\\\beta_0$\")\nfor ax in axs[1, :]:\n    ax.set_ylabel(f\"slope, $\\\\beta_1$\")\nplt.show()"
   }
 ]

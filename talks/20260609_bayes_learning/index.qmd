@@ -1,0 +1,380 @@
+---
+title: "Sequential Bayesian Learning: Linear Regression for Foot Placement Prediction"
+date: 2026-06-30
+date-format: "D MMM YYYY"
+echo: true
+code-fold: true
+code-copy: true
+code-line-numbers: true
+---
+
+## Introduction
+
+Linear model:
+$$
+y_{i} = \beta_{0} + \beta_{1} x_{i} + \epsilon_{i}, \quad \epsilon \overset{\text{iid}}{\sim} \mathrm{N}(0, \sigma^{2})
+$$
+for $i = 1, \ldots, N$ data points.
+
+Similarly, we can write:
+$$
+y_{i} \overset{\text{ind}}{\sim} \mathrm{N}(\beta_{0} + \beta_{1} x_{i}, \sigma^{2})
+$$
+
+## Simulate data
+
+We generate synthetic data [@Bishop2006PRMLCh3] from the function:
+
+$$
+\begin{align}
+y = f(x; \beta_{0}, \beta_{1}) &= \beta_{0} + \beta_{1} x \\
+ &= -0.3 + 0.5 x
+\end{align}
+$$
+
+For $i = 1, \ldots, N$:
+
+- Choose a value $x_{i} \sim \mathrm{U}(x \mid -1, 1)$
+- Compuate $y_{i} = f(x_{i})$
+- Add Gaussian noise with standard deviation $\sigma = 0.2$
+
+## Simulate data
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.gridspec import GridSpec
+from scipy.stats import norm, multivariate_normal
+plt.rcParams.update({
+    "figure.constrained_layout.use": True,
+    "axes.spines.top": False,
+    "axes.spines.right": False
+})
+np.random.seed(123)
+
+# Figure settings
+xlim, ylim = (-1., 1.), (-1., 1.)
+xx = np.linspace(-1, 1, 101, endpoint=True)
+
+# True parameters
+b0, b1 = -0.3, 0.5    # intercept and slope
+sigma = 0.2           # standard deviation of the noise
+tau = (1 / sigma)**2  # precision
+
+# Sample N=20 data points (but process them sequentially)
+N = 20
+xs = np.random.uniform(low=-1, high=1, size=N)
+ys = b0 + b1 * xs
+ys = ys + np.random.normal(loc=0, scale=sigma, size=len(xs))
+
+# Plot
+_, ax = plt.subplots(figsize=(3, 3))
+ax.plot(xx, b0 + b1 * xx, c="lightgray", lw=2)
+ax.plot(xs, ys, "o", mec="dodgerblue", mfc="none", mew=2)
+# ax.spines["bottom"].set_position("zero")
+ax.set(xlabel="x", ylabel="y", xlim=xlim, ylim=ylim)
+ax.set_aspect("equal")
+plt.show()
+```
+
+## Sequential learning
+
+Before (i.e. "_prior_" to) observing any data, we belief that the intercept ($\beta_{0}$) and slope ($\beta_{1}$) can take many values, but they are centered around 0 with some uncertainty. We model this by assuming that they are derived from a normal distribution.
+
+```{python}
+
+# Prior
+m = np.zeros(2)
+C = (1 / 2.0) * np.eye(2)  # precision parameter alpha = 2, Eq. (3.52), p. 153
+
+XX, YY = np.mgrid[-1:1.01:0.01, -1:1.01:0.01]
+pts = np.dstack((XX, YY))
+
+_, ax = plt.subplots(figsize=(3, 3))
+ax.contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))
+ax.set(xlabel="intercept, $\\beta_{0}$", ylabel="slope, $\\beta_{1}$")
+ax.set_aspect("equal")
+plt.show()
+```
+
+## Sample parameters
+
+We can sample some random combinations of intercept and slope ($\beta_{0}$, $\beta_{1}$) from the joint distribution.
+
+```{python}
+betas = multivariate_normal.rvs(mean=m, cov=C, size=10)
+
+_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))
+axs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C), alpha=0.5)
+axs[0].plot(betas[0][0], betas[0][1], "x", mec="k")
+axs[0].set(xlabel="intercept, $\\beta_{0}$", ylabel="slope, $\\beta_{1}$")
+
+axs[1].plot(xx, betas[0][0] + betas[0][1] * xx, c="r")
+axs[1].plot(xx, b0 + b1 * xx, c="lightgray")
+axs[1].set(xlabel="$x$", ylabel="$y$")
+
+for ax in axs:
+    ax.set(xlim=xlim, ylim=ylim)
+
+plt.show()
+```
+
+## Sample parameters
+
+We can sample some random combinations of intercept and slope ($\beta_{0}$, $\beta_{1}$) from the joint distribution.
+
+```{python}
+_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))
+axs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))
+axs[0].plot(betas[:, 0], betas[:, 1], "x", mec="k")
+axs[0].set(xlabel="intercept, $\\beta_{0}$", ylabel="slope, $\\beta_{1}$")
+
+axs[1].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c="r")
+axs[1].plot(xx, b0 + b1 * xx, c="lightgray")
+axs[1].set(xlabel="$x$", ylabel="$y$")
+
+for ax in axs:
+    ax.set(xlim=xlim, ylim=ylim)
+
+plt.show()
+```
+
+## Get some data
+
+- We observe our first data point, ($x_{1}, y_{1}$)
+- We compute the likelihood of that data point given ($\beta_{0}, \beta_{1}$): 
+$$
+p(y_{1} \mid \beta_{0}, \beta_{1}, x_{1})
+$$
+
+```{python}
+# Compute the likelihood of the first data point
+# for all combinations of slope and intercept
+likelihood = norm.pdf(ys[0], loc=XX + YY * xs[0], scale=sigma)
+
+# Plot the data point, and the likelihood
+_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))
+axs[0].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c="r", alpha=0.2)
+axs[0].plot(xx, b0 + b1 * xx, c="gray")
+axs[0].plot(xs[0], ys[0], "o", mfc="none", mec="dodgerblue", mew=2)
+axs[0].set(xlabel="$x$", ylabel="$y$")
+
+axs[1].contourf(XX, YY, likelihood, alpha=0.7)
+axs[1].set(xlabel="intercept, $\\beta_0$", ylabel="slope, $\\beta_1$")
+
+for ax in axs:
+    ax.set(xlim=xlim, ylim=ylim)
+plt.show()
+```
+
+## Update our belief
+
+After ("_posterior_") observing the data point, we can narrow down the uncertainties of the intercept and slope using Bayes' rule:
+$$
+p(\beta_{0}, \beta_{1} \mid y_{1}) \propto p(y_{1} \mid \beta_{0}, \beta_{1})\ p(\beta_{0}, \beta_{1})
+$$
+
+```{python}
+def update_params(m_prior, C_prior, x_i, y_i, beta=25.0):
+    """Update the model parameters.
+
+    Parameters
+    ----------
+    m_prior : np.ndarray
+        The prior for the mean.
+    C_prior: np.ndarray
+        The prior for the variance-covariance matrix.
+    x_i, y_i : float
+        The data point.
+    beta : float
+        The precision.
+    
+    Returns
+    -------
+    m_post : np.ndarray
+        The posterior of the mean.
+    C_post : np.ndarray
+        The posterior of the variance-covariance matrix.
+    """
+
+    # Design vector `phi` for a linear fit: [1, x]
+    phi = np.array([1.0, x_i])
+
+    # Compute the inverse of the prior covariance
+    C_prior_inv = np.linalg.inv(C_prior)
+
+    # Update the variance-covariance matrix
+    C_post_inv = C_prior_inv + beta * np.outer(phi, phi)
+    C_post = np.linalg.inv(C_post_inv)
+
+    # Update the mean
+    m_post = C_post @ (C_prior_inv @ m_prior + beta * y_i * phi)
+    return m_post, C_post
+
+ms, Cs = [], []
+for i, (x_i, y_i) in enumerate(zip(xs, ys)):
+    if i == 0:
+        m_post, C_post = update_params(m_prior=m, C_prior=C, x_i=x_i, y_i=y_i, beta=tau)
+        ms.append(m_post)
+        Cs.append(C_post)
+    else:
+        m_post, C_post = update_params(
+            m_prior=ms[-1],
+            C_prior=Cs[-1],
+            x_i=x_i,
+            y_i=y_i,
+            beta=tau
+        )
+        ms.append(m_post)
+        Cs.append(C_post)
+
+_, axs = plt.subplots(1, 3, sharex=True, sharey=True, figsize=(9, 3))
+axs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=m, cov=C))
+axs[1].contourf(XX, YY, likelihood)
+axs[2].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))
+for ax in axs:
+    ax.set(xlabel=f"intercept, $\\beta_0$", ylabel=f"slope, $\\beta_1$", xlim=xlim, ylim=ylim)
+axs[0].set_title("prior")
+axs[1].set_title("likelihood")
+axs[2].set_title("posterior")
+plt.show()
+```
+
+## Sample parameters
+
+```{python}
+betas = multivariate_normal.rvs(mean=ms[0], cov=Cs[0], size=10)
+
+_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))
+axs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))
+axs[0].plot(betas[:, 0], betas[:, 1], "x", mec="k")
+axs[0].set(xlabel="intercept, $\\beta_{0}$", ylabel="slope, $\\beta_{1}$")
+
+axs[1].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c="r")
+axs[1].plot(xx, b0 + b1 * xx, c="lightgray")
+axs[1].set(xlabel="$x$", ylabel="$y$")
+
+for ax in axs:
+    ax.set(xlim=xlim, ylim=ylim)
+plt.show()
+```
+
+## Get some more data
+
+- We observe our next data point, ($x_{2}, y_{2}$)
+- We compute the likelihood of that data point given ($\beta_{0}, \beta_{1}$): 
+$$
+p(y_{2} \mid \beta_{0}, \beta_{1}, (x_{1}, y_{1}), x_{2})
+$$
+
+```{python}
+# Compute the likelihood of the first data point
+# for all combinations of slope and intercept
+likelihood = norm.pdf(ys[1], loc=XX + YY * xs[1], scale=sigma)
+
+# Plot the data point, and the likelihood
+_, axs = plt.subplots(1, 2, sharex=True, sharey=True, figsize=(6, 3))
+axs[0].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c="r", alpha=0.2)
+axs[0].plot(xx, b0 + b1 * xx, c="gray")
+axs[0].plot(xs[:2], ys[:2], "o", mfc="none", mec="dodgerblue", mew=2)
+axs[0].set(xlabel="$x$", ylabel="$y$")
+
+axs[1].contourf(XX, YY, likelihood, alpha=0.7)
+axs[1].set(xlabel="intercept, $\\beta_0$", ylabel="slope, $\\beta_1$")
+
+for ax in axs:
+    ax.set(xlim=xlim, ylim=ylim)
+plt.show()
+```
+
+## Update our beliefs
+
+We update our beliefs using the prior and the likelihood
+
+```{python}
+_, axs = plt.subplots(1, 3, sharex=True, sharey=True, figsize=(9, 3))
+axs[0].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[0], cov=Cs[0]))
+axs[1].contourf(XX, YY, likelihood)
+axs[2].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[1], cov=Cs[1]))
+for ax in axs:
+    ax.set(xlabel=f"intercept, $\\beta_0$", ylabel=f"slope, $\\beta_1$", xlim=xlim, ylim=ylim)
+axs[0].set_title("prior")
+axs[1].set_title("likelihood")
+axs[2].set_title("posterior")
+plt.show()
+```
+
+## Get some more data
+
+We continue this process iteratively
+
+```{python}
+_, axs = plt.subplots(2, 4, sharex=True, sharey=True, figsize=(12, 3))
+
+for col_idx, n in enumerate([3, 8, 12, 19]):
+    axs[0, col_idx].contourf(XX, YY, multivariate_normal.pdf(pts, mean=ms[n], cov=Cs[n]))
+
+    betas = multivariate_normal.rvs(mean=ms[n], cov=Cs[n], size=10)
+    axs[0, col_idx].plot(betas[:, 0], betas[:, 1], "x", mec="k")
+
+    axs[1, col_idx].plot(xx, np.stack((np.ones(len(xx)), xx)).T @ betas.T, c="r")
+    axs[1, col_idx].plot(xx, b0 + b1 * xx, c="k")
+    axs[1, col_idx].plot(xs[:n], ys[:n], "o", mfc="none", mec="dodgerblue", mew=2)
+
+    axs[0, col_idx].set_xlim(xlim)
+    axs[0, col_idx].set_ylim(ylim)
+    axs[0, col_idx].set_aspect("equal")
+    axs[1, col_idx].set_ylim(ylim)
+    axs[1, col_idx].set_aspect("equal")
+plt.show()
+```
+
+## Using `pymc`
+
+```{python}
+import pymc as pm
+import arviz as az
+
+with pm.Model() as lin_model:
+    # Priors
+    alpha = 2.0
+    beta_0 = pm.Normal("beta_0", mu=0, tau=alpha)
+    beta_1 = pm.Normal("beta_1", mu=0, tau=alpha)
+
+    # Likelihood
+    mu = beta_0 + beta_1 * xs
+    y_obs = pm.Normal("y_obs", mu=mu, sigma=sigma, observed=ys)
+
+    # Infernece
+    trace = pm.sample(draws=5000, tune=2000, return_inferencedata=True)
+
+_, axs = plt.subplots(2, 2)
+az.plot_trace(trace, axes=axs)
+axs[0, 0].axvline(b0, c="k")
+axs[1, 0].axvline(b1, c="k")
+for ax in axs[0, :]:
+    ax.set_ylabel(f"intercept, $\\beta_0$")
+for ax in axs[1, :]:
+    ax.set_ylabel(f"slope, $\\beta_1$")
+plt.show()
+```
+
+## Discussion
+
+### Foot placement
+
+- Stable gait is defined as gait that does not lead to falls [@Bruijn2018].
+- Foot placement is one control mechanism of to establish stable gait [@Lang2026]. 
+- Foot placement models typically model step width (SW) and step length (SL).
+
+$$
+\begin{align}
+\mathrm{SW} &= \beta_{0} + \beta_{\mathrm{pos}_{\mathrm{ml}}} \mathrm{CoM}_{\mathrm{pos}_{\mathrm{ml}}} + \beta_{\mathrm{vel}_{\mathrm{ml}}} \mathrm{CoM}_{\mathrm{vel}_{\mathrm{ml}}} + \epsilon_{\mathrm{ml}} \\
+\mathrm{SL} &= \beta_{0} + \beta_{\mathrm{pos}_{\mathrm{ap}}} \mathrm{CoM}_{\mathrm{pos}_{\mathrm{ap}}} + \beta_{\mathrm{vel}_{\mathrm{ap}}} \mathrm{CoM}_{\mathrm{vel}_{\mathrm{ap}}} + \epsilon_{\mathrm{ap}}
+\end{align}
+$$
+
+## References
+
+::: {#refs}
+:::

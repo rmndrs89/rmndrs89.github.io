@@ -44,3 +44,7 @@ dev = [
     "ruff>=0.15.11",
     "watermark>=2.6.0",
 ]
+visualization = [
+    "plotly>=6.8.0",
+    "seaborn>=0.13.2",
+]
